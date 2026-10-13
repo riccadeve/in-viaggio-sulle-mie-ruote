@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Elenco delle pagine del sito per Google e gli altri motori di ricerca.
+     Per ogni racconto nuovo: copiare due blocchi <url> (pagina italiana e pagina inglese),
+     incollarli prima delle pagine privacy e cambiare gli indirizzi. Vedi LEGGIMI.md. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://inviaggiosullemieruote.com/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/gite-fuori-porta.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/gite-fuori-porta.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/day-trips.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/gite-fuori-porta.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/en/day-trips.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/gite-fuori-porta.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/day-trips.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/gite-fuori-porta.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/weekend-e-soggiorni.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/weekend-e-soggiorni.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/weekends-and-stays.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/weekend-e-soggiorni.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/en/weekends-and-stays.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/weekend-e-soggiorni.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/weekends-and-stays.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/weekend-e-soggiorni.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/grandi-viaggi.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/grandi-viaggi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/big-trips.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/grandi-viaggi.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/en/big-trips.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/grandi-viaggi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/big-trips.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/grandi-viaggi.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/racconti/bologna-sulle-mie-ruote.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/racconti/bologna-sulle-mie-ruote.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/stories/bologna-on-my-wheels.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/racconti/bologna-sulle-mie-ruote.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/en/stories/bologna-on-my-wheels.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/racconti/bologna-sulle-mie-ruote.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/stories/bologna-on-my-wheels.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/racconti/bologna-sulle-mie-ruote.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/racconti/livorno-sulle-mie-ruote.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/racconti/livorno-sulle-mie-ruote.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/stories/livorno-on-my-wheels.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/racconti/livorno-sulle-mie-ruote.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/en/stories/livorno-on-my-wheels.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/racconti/livorno-sulle-mie-ruote.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/stories/livorno-on-my-wheels.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/racconti/livorno-sulle-mie-ruote.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/racconti/modena-sulle-mie-ruote.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/racconti/modena-sulle-mie-ruote.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/stories/modena-on-my-wheels.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/racconti/modena-sulle-mie-ruote.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/en/stories/modena-on-my-wheels.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/racconti/modena-sulle-mie-ruote.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/stories/modena-on-my-wheels.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/racconti/modena-sulle-mie-ruote.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/racconti/fie-allo-sciliar.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/racconti/fie-allo-sciliar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/stories/fie-allo-sciliar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/racconti/fie-allo-sciliar.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/en/stories/fie-allo-sciliar.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/racconti/fie-allo-sciliar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/stories/fie-allo-sciliar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/racconti/fie-allo-sciliar.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/racconti/miami-sulle-mie-ruote.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/racconti/miami-sulle-mie-ruote.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/stories/miami-and-the-caribbean-on-my-wheels.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/racconti/miami-sulle-mie-ruote.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/en/stories/miami-and-the-caribbean-on-my-wheels.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/racconti/miami-sulle-mie-ruote.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/stories/miami-and-the-caribbean-on-my-wheels.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/racconti/miami-sulle-mie-ruote.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/en/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/privacy.html"/>
+  </url>
+</urlset>

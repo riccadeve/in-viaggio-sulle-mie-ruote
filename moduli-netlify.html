@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Moduli del sito · In viaggio sulle mie ruote</title>
+</head>
+<body>
+  <!-- =====================================================================
+       QUESTA PAGINA NON VA CANCELLATA E NON VA COLLEGATA DA NESSUNA PARTE.
+       Serve solo a Netlify: quando si pubblica il sito, Netlify legge questi
+       tre moduli e così accetta i messaggi inviati dal pulsante «Sì, mi è
+       stato utile» e dal modulo «Lascia un riscontro», che compaiono in fondo a
+       ogni racconto, e dalla sezione «Scrivimi» della home (li inserisce js/sito.js).
+       I nomi dei moduli e dei campi devono restare uguali a quelli usati
+       in js/sito.js: se là si aggiunge un campo, va aggiunto anche qui.
+       ===================================================================== -->
+
+  <!-- Modulo "utile": un clic su «Sì, mi è stato utile» -->
+  <form name="utile" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="text" name="racconto">
+    <input type="text" name="lingua">
+    <input type="text" name="pagina">
+    <input type="text" name="bot-field">
+  </form>
+
+  <!-- Modulo "domande": «Lascia un riscontro» -->
+  <form name="domande" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="text" name="nome">
+    <input type="email" name="email">
+    <textarea name="messaggio"></textarea>
+    <input type="checkbox" name="consenso" value="si">
+    <input type="text" name="racconto">
+    <input type="text" name="lingua">
+    <input type="text" name="subject">
+    <input type="text" name="bot-field">
+  </form>
+
+  <!-- Modulo "contatti": la sezione «Scrivimi» della home. Messaggi privati, separati dai riscontri dei racconti -->
+  <form name="contatti" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="text" name="nome">
+    <input type="email" name="email">
+    <select name="argomento">
+      <option>Domanda su un racconto</option>
+      <option>Segnalazione di un luogo</option>
+      <option>Altro</option>
+    </select>
+    <textarea name="messaggio"></textarea>
+    <input type="checkbox" name="consenso" value="si">
+    <input type="text" name="lingua">
+    <input type="text" name="subject">
+    <input type="text" name="bot-field">
+  </form>
+
+  <p>Pagina di servizio del sito. <a href="index.html">Vai alla home</a></p>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+     MODELLO PER UN NUOVO RACCONTO
+     1. Copiare questo file e dargli un nome semplice, tutto minuscolo e
+        senza spazi (esempio: lucca-sulle-mie-ruote.html).
+     2. Sostituire tutto quello che è scritto IN MAIUSCOLO.
+     3. Mettere le foto in una cartella nuova dentro img/ (esempio: img/lucca/).
+     4. Aggiungere il racconto all'elenco in js/contenuti.js usando lo
+        stesso nome breve scritto qui sotto in data-racconto.
+     5. Se il racconto ha la versione inglese, scrivere in data-altra-lingua
+        il nome della pagina inglese; altrimenti cancellare data-altra-lingua="...".
+     6. Per Google e per l'anteprima dei link (WhatsApp, Facebook): riempire
+        le righe qui sotto fino a «twitter:card» e il blocco «dati strutturati»
+        in fondo alla testata, poi aggiungere la pagina a sitemap.xml.
+     Le istruzioni complete sono nel file LEGGIMI.md.
+     ===================================================================== -->
+<html lang="it" data-radice="../" data-racconto="NOME-BREVE" data-altra-lingua="../en/stories/NOME-PAGINA-INGLESE.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- title: quello che si legge su Google. Meno di 60 caratteri, con le parole che si cercano davvero
+       (esempio: «Lucca in carrozzina: parcheggio, accessi e bagni») -->
+  <title>LUOGO in carrozzina: COSA SI TROVA NEL RACCONTO</title>
+  <!-- description: le due righe sotto il titolo su Google. Meno di 155 caratteri -->
+  <meta name="description" content="UNA O DUE FRASI CHE RIASSUMONO IL RACCONTO, CON LUOGO, «IN CARROZZINA», PARCHEGGIO, ACCESSI, BAGNI.">
+  <meta name="robots" content="noindex">  <!-- ← CANCELLARE questa riga nel racconto vero: serve solo a nascondere il modello a Google -->
+  <meta name="theme-color" content="#fbf6ec">
+  <!-- Indirizzi completi della pagina (italiana e inglese): cambiare solo le parti IN MAIUSCOLO -->
+  <link rel="canonical" href="https://inviaggiosullemieruote.com/racconti/NOME-DI-QUESTA-PAGINA.html">
+  <link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/racconti/NOME-DI-QUESTA-PAGINA.html">
+  <link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/stories/NOME-PAGINA-INGLESE.html">
+  <link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/racconti/NOME-DI-QUESTA-PAGINA.html">
+  <!-- Anteprima del link su WhatsApp, Facebook ecc.: og:image è una foto JPG larga 1200 pixel e alta 630 -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="In viaggio sulle mie ruote">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:title" content="TITOLO DEL RACCONTO">
+  <meta property="og:description" content="LA STESSA FRASE SCRITTA IN description.">
+  <meta property="og:url" content="https://inviaggiosullemieruote.com/racconti/NOME-DI-QUESTA-PAGINA.html">
+  <meta property="og:image" content="https://inviaggiosullemieruote.com/img/CARTELLA/anteprima.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="DESCRIZIONE DELLA FOTO DI ANTEPRIMA.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap">
+  <link rel="stylesheet" href="../css/stile.css">
+  <script src="../js/contenuti.js"></script>
+  <script src="../js/sito.js"></script>
+  <!-- Dati strutturati per Google: titolo, frase, foto principale, data (anno-mese-giorno) e indirizzo della pagina.
+       Attenzione a non togliere virgolette e virgole. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "TITOLO DEL RACCONTO",
+    "description": "LA STESSA FRASE SCRITTA IN description.",
+    "image": "https://inviaggiosullemieruote.com/img/CARTELLA/FOTO-PRINCIPALE.webp",
+    "datePublished": "ANNO-MESE-GIORNO",
+    "inLanguage": "it",
+    "author": {
+      "@type": "Person",
+      "name": "Anna Bigazzi",
+      "url": "https://inviaggiosullemieruote.com/#chi-sono"
+    },
+    "mainEntityOfPage": "https://inviaggiosullemieruote.com/racconti/NOME-DI-QUESTA-PAGINA.html",
+    "isPartOf": {
+      "@type": "Blog",
+      "name": "In viaggio sulle mie ruote",
+      "url": "https://inviaggiosullemieruote.com/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="salta" href="#contenuto">Vai al contenuto</a>
+  <noscript><p class="senza-js">Per usare il menu serve JavaScript attivo. <a href="../index.html">Torna alla home</a></p></noscript>
+  <testata-sito></testata-sito>   <!-- il menu in alto: si scrive da solo -->
+
+  <main id="contenuto" tabindex="-1">
+
+    <!-- ============ TESTATA DEL RACCONTO ============ -->
+    <header class="racconto-hero">
+      <div class="contenitore racconto-hero-griglia">
+        <div>
+          <!-- la sezione: gite-fuori-porta.html · weekend-e-soggiorni.html · grandi-viaggi.html -->
+          <nav aria-label="Percorso"><ol class="briciole"><li><a class="link" href="../index.html">Home</a></li><li><a class="link" href="../gite-fuori-porta.html">Gite fuori porta</a></li></ol></nav>
+          <p class="occhiello">REGIONE · Una giornata fuori porta</p>
+          <h1>TITOLO DEL RACCONTO</h1>
+          <p class="sottotitolo">UNA FRASE DI PRESENTAZIONE.</p>
+          <ul class="meta">
+            <li><span class="icona i-calendario" aria-hidden="true"></span>Visita di GIORNO E DATA</li>
+            <li><span class="icona i-luogo" aria-hidden="true"></span>LUOGO, REGIONE</li>
+          </ul>
+          <!-- le etichette (bagno, parcheggio…) arrivano da sole da js/contenuti.js -->
+          <ul class="tag-lista" aria-label="Accessibilità in breve" data-tag-racconto></ul>
+        </div>
+        <!-- FOTO PRINCIPALE: width e height sono le misure della foto in pixel; alt la descrive a chi non la vede -->
+        <figure class="racconto-hero-foto">
+          <img src="../img/CARTELLA/FOTO-PRINCIPALE.webp" width="1200" height="1500" fetchpriority="high"
+               alt="DESCRIZIONE DELLA FOTO.">
+          <figcaption>DIDASCALIA.</figcaption>
+        </figure>
+      </div>
+    </header>
+
+    <div class="contenitore">
+      <div class="racconto-layout">
+        <!-- l'indice laterale si scrive da solo: prende tutti i titoli <h2> del racconto -->
+        <nav class="indice" aria-label="Indice del racconto" data-indice></nav>
+
+        <article class="racconto-testo prosa">
+
+          <p class="attacco">PRIMO PARAGRAFO, UN PO' PIÙ GRANDE DEGLI ALTRI.</p>
+          <p>ALTRO TESTO.</p>
+
+          <!-- ============ UNA TAPPA ============
+               Ogni <h2> diventa una voce dell'indice. L'id è un nome breve senza spazi. -->
+          <h2 id="prima-tappa">TITOLO DELLA PRIMA TAPPA</h2>
+          <p>TESTO DEL RACCONTO.</p>
+
+          <!-- Per i racconti di più giorni, il titolo si scrive così:
+          <h2 id="giorno-1"><span class="giorno"><b>Giorno 1</b> Sabato 3 ottobre</span>TITOLO DEL GIORNO</h2>
+          -->
+
+          <!-- UNA FOTO CON DIDASCALIA (si ingrandisce con un clic).
+               Per una foto verticale: class="foto verticale" -->
+          <figure class="foto">
+            <img src="../img/CARTELLA/NOME-FOTO.webp" width="1600" height="1200" loading="lazy" decoding="async"
+                 alt="DESCRIZIONE DELLA FOTO.">
+            <figcaption>DIDASCALIA.</figcaption>
+          </figure>
+
+          <!-- BOX VERDE «ACCESSIBILITÀ»
+               Per cambiare l'icona, aggiungere una parola dopo box-accessibilita:
+               bagno · parcheggio · pendenza · accompagnatore · impianti · scalino
+               (senza parola: la carrozzina) -->
+          <div class="box box-accessibilita bagno" role="note">
+            <p class="box-etichetta">Accessibilità · Bagno</p>
+            <h3 class="box-titolo">TITOLO (FACOLTATIVO)</h3>
+            <p><strong>Bagno:</strong> TESTO.</p>
+          </div>
+
+          <h3>UN SOTTOTITOLO DENTRO LA TAPPA</h3>
+          <p>TESTO.</p>
+
+          <!-- DUE O TRE FOTO AFFIANCATE
+               class="galleria" = ritaglio verticale · "galleria orizzontale" · "galleria quadrata" -->
+          <div class="galleria orizzontale">
+            <figure class="foto">
+              <img src="../img/CARTELLA/FOTO-1.webp" width="1600" height="1200" loading="lazy" decoding="async" alt="DESCRIZIONE.">
+              <figcaption>DIDASCALIA.</figcaption>
+            </figure>
+            <figure class="foto">
+              <img src="../img/CARTELLA/FOTO-2.webp" width="1600" height="1200" loading="lazy" decoding="async" alt="DESCRIZIONE.">
+              <figcaption>DIDASCALIA.</figcaption>
+            </figure>
+          </div>
+
+          <!-- BOX GIALLO «DA SAPERE PRIMA DI ANDARE» (stesse parole per l'icona) -->
+          <div class="box box-avviso scalino" role="note">
+            <p class="box-etichetta">Da sapere prima di andare</p>
+            <p><strong>Ingresso:</strong> TESTO DELL'AVVISO.</p>
+          </div>
+
+          <!-- ============ SCHEDA «IL MIO SENZA SORPRESE» ============ -->
+          <section class="senza-sorprese" aria-labelledby="senza-sorprese">
+            <h2 id="senza-sorprese"><span class="icona i-spunta" aria-hidden="true"></span>Il mio «senza sorprese»</h2>
+            <p>Le informazioni da ricordare, raccolte qui per ritrovarle facilmente.</p>
+
+            <!-- Una riga <tr> per ogni voce. data-voto = numero da 1 a 5.
+                 REGOLA: le stelle (class="stelle") sono solo per percorsi e accessi (parcheggio, strada, ingresso,
+                 bagno, impianti) e seguono la legenda della home: 5 nessuna difficoltà · 4 generalmente agevole ·
+                 3 tratti che richiedono aiuto · 2 difficoltà più marcate · 1 molto impegnativo.
+                 Il voto e la nota devono dire la stessa cosa.
+                 Il cibo è una riga della stessa tabella, ma si vota con l'icona delle posate (class="piatti"): vedi l'esempio
+                 in fondo alla tabella. I cuori (class="cuori") sono solo per l'esperienza complessiva, più sotto. -->
+            <table class="tabella-voti">
+              <caption class="vh">Voti e note sull’accessibilità</caption>
+              <thead>
+                <tr><th scope="col">Voce</th><th scope="col">Voto</th><th scope="col">Da sapere prima</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">PARCHEGGIO</th>
+                  <td><span class="stelle" data-voto="5">5 su 5</span></td>
+                  <td>NOTA BREVE.</td>
+                </tr>
+                <tr>
+                  <th scope="row">PERCORSO <span class="quando">Giorno 1</span></th>   <!-- «quando» è facoltativo -->
+                  <td><span class="stelle" data-voto="3">3 su 5</span></td>
+                  <td>NOTA BREVE.</td>
+                </tr>
+                <!-- IL VOTO AL CIBO (facoltativo): è l'ultima riga della tabella e usa l'icona delle posate al posto delle stelle.
+                     Per usarla: cancellare queste tre righe di spiegazione e la riga con la freccia di chiusura qui sotto,
+                     poi sostituire le parti IN MAIUSCOLO e scrivere lo stesso numero in data-voto e nel testo.
+                <tr>
+                  <th scope="row">NOME DEL PIATTO</th>
+                  <td><span class="piatti" data-voto="5">5 su 5</span></td>
+                  <td>DUE PAROLE SUL PIATTO.</td>
+                </tr>
+                -->
+              </tbody>
+            </table>
+
+            <!-- Promemoria dei bagni: class="no" quando il bagno accessibile NON c'è -->
+            <h3>I bagni accessibili incontrati</h3>
+            <ul class="promemoria">
+              <li><strong>NOME DEL LUOGO</strong> DESCRIZIONE.</li>
+              <li class="no"><strong>NOME DEL LUOGO</strong> Non c’è un servizio igienico accessibile.</li>
+            </ul>
+
+            <!-- Voto complessivo in cuori, da 1 a 5 (lo stesso numero va in js/contenuti.js) -->
+            <div class="voto-finale">
+              <p>Esperienza complessiva</p>
+              <span class="cuori" data-voto="5" data-etichetta="Esperienza complessiva">5 cuori su 5</span>
+            </div>
+
+            <p class="avvertenza"><span class="icona i-info" aria-hidden="true"></span><span>Questo racconto descrive la nostra esperienza con carrozzina e Triride di GIORNO E DATA. Servizi, accessi e condizioni di sosta possono cambiare: per organizzare la visita controlla le informazioni aggiornate dei luoghi interessati.</span></p>
+          </section>
+
+          <!-- Qui sotto il sito aggiunge da solo «Ti è stato utile questo racconto?» e
+               «Lascia un riscontro»: non c'è niente da copiare. -->
+
+        </article>
+      </div>
+
+      <!-- «Racconto precedente / successivo»: si scrivono da soli -->
+      <nav class="vicini" aria-label="Altri racconti" data-vicini></nav>
+    </div>
+  </main>
+
+  <fondo-sito></fondo-sito>   <!-- il fondo pagina con contatti e avvertenza: si scrive da solo -->
+</body>
+</html>

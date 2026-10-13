@@ -1,0 +1,7 @@
+# In viaggio sulle mie ruote - indicazioni per i motori di ricerca.
+# Tutte le pagine del sito si possono leggere.
+User-agent: *
+Disallow:
+
+# Elenco delle pagine: va aggiornato quando si aggiunge un racconto.
+Sitemap: https://inviaggiosullemieruote.com/sitemap.xml

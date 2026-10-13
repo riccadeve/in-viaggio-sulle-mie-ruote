@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it" data-pagina="grandi" data-altra-lingua="en/big-trips.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grandi viaggi · In viaggio sulle mie ruote</title>
+  <meta name="description" content="Viaggi lunghi e all’estero in carrozzina con il Triride: volo, assistenza in aeroporto, crociera e tutto quello che serve sapere prima di partire.">
+  <meta name="theme-color" content="#fbf6ec">
+  <link rel="canonical" href="https://inviaggiosullemieruote.com/grandi-viaggi.html">
+  <link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/grandi-viaggi.html">
+  <link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/big-trips.html">
+  <link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/grandi-viaggi.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="In viaggio sulle mie ruote">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:title" content="Grandi viaggi · In viaggio sulle mie ruote">
+  <meta property="og:description" content="Viaggi lunghi e all’estero in carrozzina con il Triride: volo, assistenza in aeroporto, crociera e tutto quello che serve sapere prima di partire.">
+  <meta property="og:url" content="https://inviaggiosullemieruote.com/grandi-viaggi.html">
+  <meta property="og:image" content="https://inviaggiosullemieruote.com/img/home/anteprima.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Anna sorridente sul suo Triride in Piazza Maggiore a Bologna, davanti a Palazzo d’Accursio.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap">
+  <link rel="stylesheet" href="css/stile.css">
+  <script src="js/contenuti.js"></script>
+  <script src="js/sito.js"></script>
+</head>
+<body>
+  <a class="salta" href="#contenuto">Vai al contenuto</a>
+  <noscript><p class="senza-js">Per vedere l’elenco dei racconti serve JavaScript attivo. <a href="index.html">Torna alla home</a></p></noscript>
+  <testata-sito></testata-sito>
+
+  <main id="contenuto" tabindex="-1">
+    <header class="pagina-testa grandi">
+      <div class="contenitore">
+        <span class="icona i-globo pagina-testa-fregio" aria-hidden="true"></span>
+        <nav aria-label="Percorso"><ol class="briciole"><li><a class="link" href="index.html">Home</a></li><li aria-current="page">Grandi viaggi</li></ol></nav>
+        <p class="occhiello">Viaggi lunghi e all’estero</p>
+        <h1><span class="distintivo"><span class="icona i-globo" aria-hidden="true"></span></span>Grandi viaggi</h1>
+        <p>Più giorni, più strada, più cose da organizzare, e da raccontare. Qui trovi i viaggi lunghi e quelli all’estero, con la stessa regola di sempre: senza sorprese.</p>
+      </div>
+    </header>
+
+    <div class="sezione contenitore">
+      <section class="filtri" aria-labelledby="titolo-filtri">
+        <h2 class="filtri-titolo" id="titolo-filtri"><span class="icona i-filtro" aria-hidden="true"></span>Filtra per accessibilità</h2>
+        <p class="filtri-aiuto">Tocca una o più voci: restano solo i racconti che le hanno tutte.</p>
+        <div class="filtri-lista" data-filtri></div>
+        <p class="filtri-stato" data-stato></p>
+      </section>
+
+      <h2 class="vh">Elenco dei racconti</h2>
+      <!-- le schede arrivano da js/contenuti.js (racconti con sezione: "grandi").
+           Finché non ce ne sono, il sito mostra da solo il riquadro «Prossimamente» qui sotto. -->
+      <div class="griglia-schede" data-racconti="grandi"></div>
+
+      <div class="prossimamente" data-prossimamente hidden>
+        <img src="img/home/sezione-grandi-viaggi.svg" width="800" height="600" alt="">
+        <h2>Prossimamente</h2>
+        <p>Sto preparando la valigia per il primo grande viaggio: appena torno, lo trovi qui, con tutto quello che avrei voluto sapere prima di partire.</p>
+        <p>Nel frattempo, le mie ruote hanno già fatto un po’ di strada.</p>
+        <p class="azioni">
+          <a class="btn btn-primario" href="gite-fuori-porta.html">Gite fuori porta <span class="icona i-freccia" aria-hidden="true"></span></a>
+          <a class="btn btn-chiaro" href="weekend-e-soggiorni.html">Weekend e soggiorni <span class="icona i-freccia" aria-hidden="true"></span></a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <fondo-sito></fondo-sito>
+</body>
+</html>

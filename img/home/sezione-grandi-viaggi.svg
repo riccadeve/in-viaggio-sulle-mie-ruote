@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+<defs><linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dcc2"/><stop offset="1" stop-color="#fbeecb"/></linearGradient></defs>
+<rect width="800" height="600" fill="url(#cielo)"/>
+<circle cx="612" cy="168" r="74" fill="#e0a93f"/>
+<path d="M0 420 Q130 320 270 400 T540 372 T800 410 V600 H0Z" fill="#a9bd9f"/>
+<path d="M0 478 Q210 398 410 470 T800 446 V600 H0Z" fill="#3f5a3d"/>
+<path d="M118 372 C 230 150, 470 120, 628 300" fill="none" stroke="#b04e2c" stroke-width="6" stroke-linecap="round" stroke-dasharray="1 20"/>
+<g transform="translate(118 372)"><path d="M0 0s-26-26-26-48a26 26 0 0 1 52 0c0 22-26 48-26 48z" fill="#b04e2c"/><circle cy="-48" r="10" fill="#fbf6ec"/></g>
+<g transform="translate(640 316)"><circle r="34" fill="#fffdf8"/><circle r="22" fill="none" stroke="#213b2c" stroke-width="5"/><g stroke="#213b2c" stroke-width="3" stroke-linecap="round"><path d="M0 -20v40M-20 0h40M-14 -14l28 28M14 -14l-28 28"/></g><circle r="6" fill="#213b2c"/></g>
+<g fill="#fffdf8" opacity=".9"><ellipse cx="200" cy="130" rx="62" ry="20"/><ellipse cx="246" cy="114" rx="40" ry="18"/><ellipse cx="452" cy="210" rx="48" ry="15"/></g>
+</svg>

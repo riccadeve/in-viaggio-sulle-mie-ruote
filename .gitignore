@@ -1,0 +1,7 @@
+# File che restano solo sul computer e non vanno su GitHub
+_da_eliminare/
+.claude/
+
+# File che Windows crea da solo
+Thumbs.db
+desktop.ini

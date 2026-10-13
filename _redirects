@@ -1,0 +1,8 @@
+# Netlify: questi file servono a chi lavora sul sito e non devono aprirsi online.
+# A chi li cerca viene mostrata la pagina «non trovata» (404.html), anche nella versione
+# senza «.html» che Netlify offre da solo. NON cancellare questo file: vedi LEGGIMI.md.
+/LEGGIMI.md                  /404.html  404!
+/racconti/_modello.html      /404.html  404!
+/racconti/_modello           /404.html  404!
+/en/stories/_template.html   /404.html  404!
+/en/stories/_template        /404.html  404!

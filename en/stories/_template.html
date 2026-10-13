@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!-- =====================================================================
+     MODELLO PER UN RACCONTO IN INGLESE
+     1. Copiare questo file e dargli un nome semplice in inglese, tutto
+        minuscolo e senza spazi (esempio: lucca-on-my-wheels.html).
+     2. Sostituire tutto quello che è scritto IN MAIUSCOLO con il testo inglese.
+        Le foto sono le stesse della versione italiana (cartella img/).
+     3. In data-racconto scrivere lo stesso nome breve usato in js/contenuti.js.
+     4. In data-altra-lingua scrivere il nome della pagina italiana corrispondente.
+     5. Aggiungere il blocco del racconto in js/contenuti-en.js.
+     6. Per Google e per l'anteprima dei link (WhatsApp, Facebook): riempire
+        le righe qui sotto fino a «twitter:card» e il blocco «dati strutturati»
+        in fondo alla testata, poi aggiungere la pagina a sitemap.xml.
+     Le istruzioni complete sono nel file LEGGIMI.md.
+     ===================================================================== -->
+<html lang="en" data-radice="../../" data-pagine="../" data-racconto="NOME-BREVE" data-altra-lingua="../../racconti/NOME-PAGINA-ITALIANA.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- title: quello che si legge su Google. Meno di 60 caratteri, con le parole che si cercano davvero
+       (esempio: «Lucca in a wheelchair: parking, access and toilets») -->
+  <title>PLACE in a wheelchair: WHAT THE STORY COVERS</title>
+  <!-- description: le due righe sotto il titolo su Google. Meno di 155 caratteri -->
+  <meta name="description" content="ONE OR TWO SENTENCES SUMMING UP THE STORY, WITH THE PLACE, «IN A WHEELCHAIR», PARKING, ACCESS, TOILETS.">
+  <meta name="robots" content="noindex">  <!-- ← CANCELLARE questa riga nel racconto vero -->
+  <meta name="theme-color" content="#fbf6ec">
+  <!-- Indirizzi completi della pagina (italiana e inglese): cambiare solo le parti IN MAIUSCOLO -->
+  <link rel="canonical" href="https://inviaggiosullemieruote.com/en/stories/NOME-DI-QUESTA-PAGINA.html">
+  <link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/racconti/NOME-PAGINA-ITALIANA.html">
+  <link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/stories/NOME-DI-QUESTA-PAGINA.html">
+  <link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/racconti/NOME-PAGINA-ITALIANA.html">
+  <!-- Anteprima del link su WhatsApp, Facebook ecc.: og:image è la stessa foto JPG della pagina italiana -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Travelling on my wheels">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="it_IT">
+  <meta property="og:title" content="STORY TITLE">
+  <meta property="og:description" content="THE SAME SENTENCE WRITTEN IN description.">
+  <meta property="og:url" content="https://inviaggiosullemieruote.com/en/stories/NOME-DI-QUESTA-PAGINA.html">
+  <meta property="og:image" content="https://inviaggiosullemieruote.com/img/CARTELLA/anteprima.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="DESCRIPTION OF THE PREVIEW PHOTO.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap">
+  <link rel="stylesheet" href="../../css/stile.css">
+  <script src="../../js/contenuti.js"></script>
+  <script src="../../js/contenuti-en.js"></script>
+  <script src="../../js/sito.js"></script>
+  <!-- Dati strutturati per Google: titolo, frase, foto principale, data (anno-mese-giorno) e indirizzo della pagina.
+       Attenzione a non togliere virgolette e virgole. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "STORY TITLE",
+    "description": "THE SAME SENTENCE WRITTEN IN description.",
+    "image": "https://inviaggiosullemieruote.com/img/CARTELLA/FOTO-PRINCIPALE.webp",
+    "datePublished": "ANNO-MESE-GIORNO",
+    "inLanguage": "en",
+    "author": {
+      "@type": "Person",
+      "name": "Anna Bigazzi",
+      "url": "https://inviaggiosullemieruote.com/en/#chi-sono"
+    },
+    "mainEntityOfPage": "https://inviaggiosullemieruote.com/en/stories/NOME-DI-QUESTA-PAGINA.html",
+    "isPartOf": {
+      "@type": "Blog",
+      "name": "Travelling on my wheels",
+      "url": "https://inviaggiosullemieruote.com/en/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="salta" href="#contenuto">Skip to content</a>
+  <noscript><p class="senza-js">The menu needs JavaScript turned on. <a href="../index.html">Back to the home page</a></p></noscript>
+  <testata-sito></testata-sito>
+
+  <main id="contenuto" tabindex="-1">
+
+    <header class="racconto-hero">
+      <div class="contenitore racconto-hero-griglia">
+        <div>
+          <!-- la sezione: day-trips.html · weekends-and-stays.html · big-trips.html -->
+          <nav aria-label="Breadcrumb"><ol class="briciole"><li><a class="link" href="../index.html">Home</a></li><li><a class="link" href="../day-trips.html">Day trips</a></li></ol></nav>
+          <p class="occhiello">REGION · A day trip</p>
+          <h1>STORY TITLE</h1>
+          <p class="sottotitolo">ONE INTRODUCTORY SENTENCE.</p>
+          <ul class="meta">
+            <li><span class="icona i-calendario" aria-hidden="true"></span>Visited on DAY AND DATE</li>
+            <li><span class="icona i-luogo" aria-hidden="true"></span>PLACE, REGION</li>
+          </ul>
+          <ul class="tag-lista" aria-label="Accessibility at a glance" data-tag-racconto></ul>
+        </div>
+        <figure class="racconto-hero-foto">
+          <img src="../../img/CARTELLA/FOTO-PRINCIPALE.webp" width="1200" height="1500" fetchpriority="high"
+               alt="DESCRIPTION OF THE PHOTO.">
+          <figcaption>CAPTION.</figcaption>
+        </figure>
+      </div>
+    </header>
+
+    <div class="contenitore">
+      <div class="racconto-layout">
+        <nav class="indice" aria-label="In this story" data-indice></nav>
+
+        <article class="racconto-testo prosa">
+
+          <p class="attacco">FIRST PARAGRAPH, A LITTLE LARGER THAN THE OTHERS.</p>
+
+          <!-- Ogni <h2> diventa una voce dell'indice. Per più giorni:
+          <h2 id="giorno-1"><span class="giorno"><b>Day 1</b> Saturday 3 October</span>DAY TITLE</h2> -->
+          <h2 id="prima-tappa">FIRST STOP TITLE</h2>
+          <p>STORY TEXT.</p>
+
+          <figure class="foto">
+            <img src="../../img/CARTELLA/NOME-FOTO.webp" width="1600" height="1200" loading="lazy" decoding="async"
+                 alt="DESCRIPTION OF THE PHOTO.">
+            <figcaption>CAPTION.</figcaption>
+          </figure>
+
+          <!-- BOX VERDE: parole per l'icona: bagno · parcheggio · pendenza · accompagnatore · impianti · scalino -->
+          <div class="box box-accessibilita bagno" role="note">
+            <p class="box-etichetta">Accessibility · Toilet</p>
+            <p>TEXT.</p>
+          </div>
+
+          <!-- BOX GIALLO -->
+          <div class="box box-avviso scalino" role="note">
+            <p class="box-etichetta">Good to know before you go</p>
+            <p><strong>Entrance:</strong> WARNING TEXT.</p>
+          </div>
+
+          <section class="senza-sorprese" aria-labelledby="senza-sorprese">
+            <h2 id="senza-sorprese"><span class="icona i-spunta" aria-hidden="true"></span>My “no surprises” summary</h2>
+            <p>The things to remember, gathered here so they are easy to find.</p>
+
+            <!-- REGOLA: le stelle (class="stelle") sono solo per percorsi e accessi (parcheggio, strada, ingresso, bagno,
+                 impianti) e seguono la legenda della home: 5 no difficulty · 4 generally easy going ·
+                 3 some stretches need help · 2 more marked difficulties · 1 very demanding.
+                 Il voto e la nota devono dire la stessa cosa.
+                 Il cibo è una riga della stessa tabella, ma si vota con l'icona delle posate (class="piatti"): vedi l'esempio
+                 in fondo alla tabella. I cuori (class="cuori") sono solo per l'esperienza complessiva, più sotto. -->
+            <table class="tabella-voti">
+              <caption class="vh">Ratings and accessibility notes</caption>
+              <thead>
+                <tr><th scope="col">Item</th><th scope="col">Rating</th><th scope="col">Good to know</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">PARKING</th>
+                  <td><span class="stelle" data-voto="5">5 out of 5</span></td>
+                  <td>SHORT NOTE.</td>
+                </tr>
+                <!-- IL VOTO AL CIBO (facoltativo): è l'ultima riga della tabella e usa l'icona delle posate al posto delle stelle,
+                     con lo stesso numero della pagina italiana. Per usarla: cancellare queste tre righe di spiegazione
+                     e la riga con la freccia di chiusura qui sotto, poi sostituire le parti IN MAIUSCOLO.
+                <tr>
+                  <th scope="row">NAME OF THE DISH</th>
+                  <td><span class="piatti" data-voto="5">5 out of 5</span></td>
+                  <td>A FEW WORDS ABOUT THE DISH.</td>
+                </tr>
+                -->
+              </tbody>
+            </table>
+
+            <h3>Accessible toilets we found</h3>
+            <ul class="promemoria">
+              <li><strong>PLACE NAME</strong> DESCRIPTION.</li>
+              <li class="no"><strong>PLACE NAME</strong> There is no accessible toilet.</li>
+            </ul>
+
+            <div class="voto-finale">
+              <p>Overall experience</p>
+              <span class="cuori" data-voto="5" data-etichetta="Overall experience">5 hearts out of 5</span>
+            </div>
+
+            <p class="avvertenza"><span class="icona i-info" aria-hidden="true"></span><span>This story describes our experience with a wheelchair and Triride on DAY AND DATE. Services, access and parking conditions can change: when planning your visit, check the latest information for each place.</span></p>
+          </section>
+
+          <!-- Qui sotto il sito aggiunge da solo «Was this story helpful?» e
+               «Leave feedback»: non c'è niente da copiare. -->
+
+        </article>
+      </div>
+
+      <nav class="vicini" aria-label="Other stories" data-vicini></nav>
+    </div>
+  </main>
+
+  <fondo-sito></fondo-sito>
+</body>
+</html>
