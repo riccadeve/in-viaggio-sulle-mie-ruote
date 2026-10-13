@@ -152,6 +152,21 @@ e togliere la riga con `hreflang="en"`. `robots.txt` indica a Google dove si tro
 - Google: in [Search Console](https://search.google.com/search-console) aggiungere il sito e, alla voce **Sitemap**,
   scrivere `sitemap.xml`. Si fa una volta sola.
 
+## Il progetto su GitHub e il sito di prova
+
+Tutto il progetto è salvato anche su GitHub, nel repository pubblico
+[github.com/riccadeve/in-viaggio-sulle-mie-ruote](https://github.com/riccadeve/in-viaggio-sulle-mie-ruote).
+Da lì GitHub Pages pubblica gratis un **sito di prova**, utile per controllare le modifiche nel browser e sul telefono
+senza usare Netlify: [riccadeve.github.io/in-viaggio-sulle-mie-ruote](https://riccadeve.github.io/in-viaggio-sulle-mie-ruote/).
+
+- Il sito di prova si aggiorna da solo, in uno o due minuti, ogni volta che le modifiche vengono caricate su GitHub.
+- Il sito vero resta quello su Netlify (`inviaggiosullemieruote.com`): lì si pubblica solo quando le prove sono a posto.
+- Sul sito di prova **non funzionano** i moduli («Sì, mi è stato utile», «Lascia un riscontro», «Scrivimi»), che hanno bisogno di Netlify,
+  e la pagina «non trovata» compare senza grafica. È normale.
+- Nella cartella ci sono due file che servono solo a GitHub: `.gitignore` (elenca ciò che non va caricato, come `_da_eliminare`)
+  e `.nojekyll` (dice a GitHub di pubblicare i file così come sono), più la cartella nascosta `.git`.
+  Su Netlify non servono: nella copia da trascinare su Netlify non vanno messi.
+
 ## File che non devono vedersi online
 
 Il sito si pubblica trascinando **tutta la cartella** su Netlify: dentro ci sono anche file che servono solo a chi lavora
