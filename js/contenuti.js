@@ -82,7 +82,7 @@ window.RACCONTI = [
     regione: "Emilia-Romagna",
     data: "2026-10-03",
     dataTesto: "Sabato 3 ottobre 2026",
-    copertina: "img/bologna/piazza-maggiore-card.webp",
+    copertina: "img/bologna/piazza-maggiore-triride-card.webp",
     copertinaAlt: "Anna sorridente sul suo Triride in Piazza Maggiore, davanti a Palazzo d’Accursio.",
     copertinaFuoco: "center bottom",     // facoltativo: quale parte della foto tenere nel ritaglio
     cuori: 5,
