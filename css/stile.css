@@ -592,6 +592,8 @@ testata-sito { display: block; position: sticky; top: 0; z-index: 50; }
 .legenda { display: grid; gap: .45rem; margin: 1.2rem 0 0; padding: 0; list-style: none; }
 .legenda li { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: .2rem 1rem; margin: 0; padding: .55rem .9rem; border-radius: .9rem; background: var(--crema); font-weight: 600; line-height: 1.35; }
 @media (max-width: 26em) { .legenda li { grid-template-columns: minmax(0, 1fr); } }
+/* sotto la legenda delle stelle: «Una piccola precisazione», discreta (corsivo, più piccola ma mai sotto i 16 px) */
+.guida-precisazione { margin: 1.1rem 0 0; padding-left: .9rem; border-left: 2px solid var(--miele); font-size: max(.9em, 16px); font-style: italic; line-height: 1.55; color: var(--testo-tenue); }
 .guida-cuori { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; margin-top: 1.2rem; padding: .9rem 1.1rem; border-radius: 1rem; background: var(--sabbia); font-weight: 700; color: var(--bosco); }
 .guida-cuori .voto { font-size: 1.25rem; }
 @media (max-width: 54em) { .guida { grid-template-columns: minmax(0, 1fr); } }

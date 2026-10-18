@@ -338,9 +338,10 @@ sul sito non compare niente che riguardi i social.
 ## Cambiare le foto della home
 
 Sostituire i file in `img/home/` lasciando lo stesso nome:
-`hero.webp`, `chi-sono-1.webp`, `chi-sono-2.webp`, `chi-sono-3.webp`, `sezione-gite.webp`, `sezione-weekend.webp`, `sezione-grandi-viaggi.webp`.
+`hero.jpg`, `chi-sono-1.webp`, `chi-sono-2.webp`, `chi-sono-3.webp`, `sezione-gite.webp`, `sezione-weekend.webp`, `sezione-grandi-viaggi.webp`.
 (`sezione-grandi-viaggi.svg` è invece il disegno che compare nel riquadro «Prossimamente» delle sezioni ancora vuote: non va cancellato.)
 Se cambia il soggetto, aggiornare anche la descrizione `alt` in `index.html`.
+Se si cambia `hero.jpg` (la copertina), va rifatta anche `anteprima.jpg`, la foto dei link condivisi (vedi «Farsi trovare su Google»).
 
 ## Accessibilità: le regole da non rompere
 
