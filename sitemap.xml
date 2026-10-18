@@ -52,6 +52,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/grandi-viaggi.html"/>
   </url>
   <url>
+    <loc>https://inviaggiosullemieruote.com/mappa.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/mappa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/map.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/mappa.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/en/map.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/mappa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/map.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/mappa.html"/>
+  </url>
+  <url>
     <loc>https://inviaggiosullemieruote.com/racconti/bologna-sulle-mie-ruote.html</loc>
     <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/racconti/bologna-sulle-mie-ruote.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/stories/bologna-on-my-wheels.html"/>

@@ -40,6 +40,20 @@ window.SITO = {
              "accompagnatore"  Serve accompagnatore
              "pendenza"        Percorso in pendenza
              "impianti"        Impianti di risalita accessibili
+   coordinate → dove mettere il segnaposto sulla «Mappa dei miei viaggi»:
+             [latitudine, longitudine], con il punto e non la virgola, per esempio
+             coordinate: [43.8430, 10.5050]. Si trovano su Google Maps: clic destro sul
+             luogo, poi clic sui due numeri che compaiono (si copiano da soli).
+             Senza coordinate il racconto non compare sulla mappa, ma resta nel resto del sito.
+   tappe   → facoltativo, per i viaggi con più luoghi: un pallino più piccolo per ogni tappa.
+             nome   → come si legge sulla mappa
+             giorno → l'id del titolo del racconto a cui porta il pallino (per esempio
+                      "giorno-3", cioè <h2 id="giorno-3"> nella pagina). Se non c'è, il
+                      pallino porta all'inizio del racconto.
+             Esempio:
+               tappe: [
+                 { nome: "Ortisei", coordinate: [46.5747, 11.6714], giorno: "giorno-4" }
+               ]
    -------------------------------------------------------------------------- */
 window.RACCONTI = [
   {
@@ -55,7 +69,17 @@ window.RACCONTI = [
     copertina: "img/miami/copertina-card.webp",
     copertinaAlt: "Anna e il suo accompagnatore sorridono in un selfie davanti a un murale coloratissimo di Wynwood, a Miami.",
     cuori: 5,
-    tag: ["bagno", "parcheggio", "accompagnatore", "pendenza"]
+    tag: ["bagno", "parcheggio", "accompagnatore", "pendenza"],
+    coordinate: [25.7617, -80.1918],
+    tappe: [
+      { nome: "Everglades (Shark Valley)", coordinate: [25.7575, -80.7664], giorno: "giorno-3" },
+      { nome: "Key West",                  coordinate: [24.5551, -81.7800], giorno: "giorno-4" },
+      { nome: "Roatán",                    coordinate: [16.3175, -86.5390], giorno: "giorno-7" },
+      { nome: "Costa Maya / Mahahual",     coordinate: [18.7139, -87.7105], giorno: "giorno-8" },
+      { nome: "Chacchoben",                coordinate: [19.0007, -88.2312], giorno: "giorno-8" },
+      { nome: "Cozumel",                   coordinate: [20.5014, -86.9436], giorno: "giorno-9" },
+      { nome: "Ocean Cay",                 coordinate: [25.4209, -79.2067], giorno: "giorno-11" }
+    ]
   },
   {
     id: "modena",
@@ -70,7 +94,8 @@ window.RACCONTI = [
     copertina: "img/modena/piazza-grande-card.webp",
     copertinaAlt: "Piazza Grande a Modena, con la torre Ghirlandina e il Duomo.",
     cuori: 5,
-    tag: ["bagno", "parcheggio"]
+    tag: ["bagno", "parcheggio"],
+    coordinate: [44.6458, 10.9256]
   },
   {
     id: "bologna",
@@ -86,7 +111,8 @@ window.RACCONTI = [
     copertinaAlt: "Anna sorridente sul suo Triride in Piazza Maggiore, davanti a Palazzo d’Accursio.",
     copertinaFuoco: "center bottom",     // facoltativo: quale parte della foto tenere nel ritaglio
     cuori: 5,
-    tag: ["bagno", "parcheggio"]
+    tag: ["bagno", "parcheggio"],
+    coordinate: [44.4938, 11.3426]
   },
   {
     id: "livorno",
@@ -101,7 +127,8 @@ window.RACCONTI = [
     copertina: "img/livorno/terrazza-mascagni-card.webp",
     copertinaAlt: "Il gazebo della Terrazza Mascagni dietro la balaustra, con il pavimento a scacchiera in primo piano.",
     cuori: 5,
-    tag: ["bagno", "parcheggio", "accompagnatore"]
+    tag: ["bagno", "parcheggio", "accompagnatore"],
+    coordinate: [43.5485, 10.3106]
   },
   {
     id: "fie",
@@ -116,6 +143,13 @@ window.RACCONTI = [
     copertina: "img/fie/discesa-compaccio-card.webp",
     copertinaAlt: "Anna con la carrozzina e il Triride su una strada tra i prati, con le Dolomiti tra le nuvole.",
     cuori: 5,
-    tag: ["bagno", "parcheggio", "accompagnatore", "pendenza", "impianti"]
+    tag: ["bagno", "parcheggio", "accompagnatore", "pendenza", "impianti"],
+    coordinate: [46.5166, 11.5006],
+    tappe: [
+      { nome: "Alpe di Siusi / Compaccio", coordinate: [46.5404, 11.6163], giorno: "giorno-3" },
+      { nome: "Ortisei",                   coordinate: [46.5747, 11.6714], giorno: "giorno-4" },
+      { nome: "Val d’Anna",                coordinate: [46.5830, 11.6900], giorno: "giorno-5" },
+      { nome: "Monte Pana",                coordinate: [46.5506, 11.7180], giorno: "giorno-6" }
+    ]
   }
 ];

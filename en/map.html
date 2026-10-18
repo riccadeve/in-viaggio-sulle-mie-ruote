@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-pagina="mappa" data-radice="../" data-pagine="" data-altra-lingua="../mappa.html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My travel map · Travelling on my wheels</title>
+  <meta name="description" content="Anna Bigazzi’s travel map: every place tested in a wheelchair with the Triride, in Italy and around the world, with links to the stories.">
+  <meta name="theme-color" content="#fbf6ec">
+  <link rel="canonical" href="https://inviaggiosullemieruote.com/en/map.html">
+  <link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/mappa.html">
+  <link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/map.html">
+  <link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/mappa.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Travelling on my wheels">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="it_IT">
+  <meta property="og:title" content="My travel map · Travelling on my wheels">
+  <meta property="og:description" content="Anna Bigazzi’s travel map: every place tested in a wheelchair with the Triride, in Italy and around the world, with links to the stories.">
+  <meta property="og:url" content="https://inviaggiosullemieruote.com/en/map.html">
+  <meta property="og:image" content="https://inviaggiosullemieruote.com/img/home/anteprima.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Anna smiling on her Triride in Piazza Maggiore in Bologna, in front of Palazzo d’Accursio.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap">
+  <link rel="stylesheet" href="../css/stile.css">
+  <script src="../js/contenuti.js"></script>
+  <script src="../js/contenuti-en.js"></script>
+  <script src="../js/sito.js"></script>
+</head>
+<body>
+  <a class="salta" href="#contenuto">Skip to content</a>
+  <noscript><p class="senza-js">The map and the list of places need JavaScript turned on. Meanwhile: <a href="day-trips.html">Day trips</a> · <a href="weekends-and-stays.html">Weekends and stays</a> · <a href="big-trips.html">Big trips</a></p></noscript>
+  <testata-sito></testata-sito>
+
+  <main id="contenuto" tabindex="-1">
+    <header class="pagina-testa testa-mappa">
+      <div class="contenitore">
+        <span class="icona i-luogo pagina-testa-fregio" aria-hidden="true"></span>
+        <nav aria-label="Breadcrumb"><ol class="briciole"><li><a class="link" href="index.html">Home</a></li><li aria-current="page">My travel map</li></ol></nav>
+        <p class="occhiello">In Italy and around the world</p>
+        <h1><span class="distintivo"><span class="icona i-luogo" aria-hidden="true"></span></span>My travel map</h1>
+        <p>All the places from my stories, in Italy and around the world. Tap a pin to see the trip and open the story; the smaller dots are the stops on trips of several days.</p>
+      </div>
+    </header>
+
+    <div class="sezione contenitore">
+      <!-- la mappa la disegna js/sito.js con i luoghi di js/contenuti.js (coordinate e tappe di ogni racconto) -->
+      <div data-mappa="completa"></div>
+
+      <section class="luoghi" aria-labelledby="titolo-luoghi">
+        <div class="intestazione">
+          <h2 id="titolo-luoghi">All the places, as a list</h2>
+          <p>The same places as on the map, sorted by section, with links to the stories and to the days of each stop.</p>
+        </div>
+        <!-- l'elenco arriva da js/contenuti.js -->
+        <div data-luoghi></div>
+      </section>
+    </div>
+  </main>
+
+  <fondo-sito></fondo-sito>
+</body>
+</html>

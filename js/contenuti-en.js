@@ -6,6 +6,12 @@
    Per tradurre un racconto: copiare un blocco, cambiare il nome prima dei
    due punti con lo stesso "id" usato in contenuti.js e tradurre i testi.
    Un racconto compare nella versione inglese solo quando ha il suo blocco qui.
+
+   Mappa dei viaggi: coordinate e tappe restano in js/contenuti.js. Se il nome di
+   una tappa in inglese è diverso, si aggiunge al blocco del racconto, per esempio:
+     nomiTappe: { "Alpe di Siusi / Compaccio": "Alpe di Siusi / Compatsch" }
+   (a sinistra il nome italiano, uguale a quello di contenuti.js; a destra quello inglese).
+   Per ora non serve: i nomi delle tappe sono uguali nelle due lingue.
    -------------------------------------------------------------------------- */
 window.RACCONTI_EN = {
 

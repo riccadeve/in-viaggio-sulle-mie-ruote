@@ -7,8 +7,9 @@ Per vederlo basta un doppio clic su `index.html`. Per metterlo online si carica 
 
 | File o cartella | A cosa serve |
 |---|---|
-| `index.html` | La home (hero, chi sono, come leggere i racconti, le tre sezioni, ultimi racconti, «Scrivimi») |
+| `index.html` | La home (hero, chi sono, come leggere i racconti, le tre sezioni, anteprima della mappa, ultimi racconti, «Scrivimi») |
 | `gite-fuori-porta.html`, `weekend-e-soggiorni.html`, `grandi-viaggi.html` | Le tre pagine di sezione |
+| `mappa.html` | «La mappa dei miei viaggi»: la mappa con un segnaposto per ogni luogo e, sotto, l'elenco dei luoghi (vedi «La mappa dei miei viaggi») |
 | `racconti/` | Una pagina per ogni racconto, più `_modello.html` da copiare |
 | `js/contenuti.js` | **Elenco dei racconti** (e, in cima, autrice e profili social): è il file da aggiornare a ogni pubblicazione |
 | `js/sito.js`, `css/stile.css` | Funzionamento e aspetto del sito: di norma non si toccano |
@@ -33,7 +34,9 @@ Menu in alto e fondo pagina sono scritti una volta sola (in `js/sito.js`) e comp
    Cancellare la riga `<meta name="robots" content="noindex">`.
 4. **Elenco.** Aprire `js/contenuti.js`, copiare un blocco `{ ... }` dell'elenco e cambiare i valori.
    Il valore di `id` deve essere uguale a quello scritto nella pagina in `data-racconto="..."`.
-5. **Controllo.** Aprire `index.html`: il racconto compare da solo nella sua sezione, nei filtri e nei
+   Nello stesso blocco vanno le `coordinate` del luogo (e, per i viaggi di più giorni, le `tappe`):
+   così il racconto compare da solo sulla mappa. Come si fa è spiegato in «La mappa dei miei viaggi».
+5. **Controllo.** Aprire `index.html`: il racconto compare da solo nella sua sezione, nei filtri, sulla mappa e nei
    collegamenti «precedente / successivo» degli altri racconti. In home, «Gli ultimi racconti» mostra
    i tre viaggi più recenti per data del viaggio: un viaggio più vecchio (come Miami) lì non compare.
 6. **Google e anteprima dei link.** In cima alla pagina riempire titolo, descrizione, indirizzi completi e dati
@@ -94,6 +97,63 @@ I racconti si scrivono al passato («siamo arrivati», «abbiamo scelto»); rest
 - Tutte le foto, tranne la prima in alto, hanno `loading="lazy"`: così da telefono si scaricano solo quando servono.
   Nei modelli è già scritto: basta non toglierlo.
 
+## La mappa dei miei viaggi
+
+`mappa.html` (in inglese `en/map.html`, voce **Mappa** del menu) mostra un segnaposto per ogni racconto, in Italia e nel mondo.
+In home, dopo «Dove andiamo?», c'è un'anteprima più bassa della stessa mappa con il pulsante «Apri la mappa completa».
+La mappa legge i luoghi da `js/contenuti.js`: un racconto nuovo con le coordinate compare da solo, in tutte e due le lingue,
+sulla mappa e nell'elenco dei luoghi sotto la mappa.
+
+**Le coordinate di un racconto nuovo.** Nel blocco del racconto in `js/contenuti.js` si aggiunge una riga:
+
+```js
+coordinate: [43.8430, 10.5050],
+```
+
+- Il primo numero è la latitudine, il secondo la longitudine, con il **punto** al posto della virgola.
+- Per trovarle: su [Google Maps](https://www.google.com/maps) fare clic destro sul luogo; in cima al menu compaiono i due numeri,
+  e con un clic si copiano. Basta incollarli tra le parentesi quadre.
+- Il segnaposto ha il colore della sezione, come le card della home: terracotta per «Gite fuori porta»,
+  verde bosco per «Weekend e soggiorni», miele scuro per «Grandi viaggi».
+- Senza `coordinate` il racconto resta nel sito ma non compare sulla mappa.
+
+**Le tappe dei viaggi di più giorni.** Per mettere sulla mappa anche i luoghi visitati nei vari giorni si aggiunge l'elenco `tappe`:
+
+```js
+tappe: [
+  { nome: "Ortisei",    coordinate: [46.5747, 11.6714], giorno: "giorno-4" },
+  { nome: "Monte Pana", coordinate: [46.5506, 11.7180], giorno: "giorno-6" }
+]
+```
+
+- `nome` è quello che si legge nella scheda della tappa.
+- `giorno` è l'`id` del titolo del racconto a cui porta la tappa: nella pagina è scritto `<h2 id="giorno-4">`.
+  Nella scheda compare «Giorno 4» con il pulsante «Vai a questo giorno del racconto». Se si lascia senza `giorno`,
+  la tappa porta all'inizio del racconto; con un `id` diverso (per esempio `"pranzo"`) porta a quel punto del racconto.
+- Ogni tappa diventa un pallino più piccolo dello stesso colore del racconto.
+- Se il nome di una tappa in inglese è diverso, si scrive in `js/contenuti-en.js` (le istruzioni sono in cima al file).
+  I nomi delle tappe di oggi sono uguali nelle due lingue.
+
+**Come funziona.**
+
+- All'apertura la mappa mostra tutti i luoghi. I pulsanti **Italia** e **Mondo** spostano la vista; **+** e **−** ingrandiscono e rimpiccioliscono.
+- I luoghi troppo vicini si riuniscono in un cerchio con il numero: toccandolo la mappa si ingrandisce e i luoghi si separano.
+- Sotto la mappa ci sono la legenda dei colori e, nella pagina della mappa, i filtri per sezione.
+- Sul telefono la mappa non blocca lo scorrimento della pagina: si sposta con due dita, oppure con un dito dopo averla toccata una volta.
+- Con la tastiera: Tab passa da un segnaposto all'altro, Invio apre la scheda, Esc la chiude.
+
+**Cosa arriva da fuori.** La mappa di sfondo è quella gratuita di [OpenFreeMap](https://openfreemap.org), stile «Positron»,
+fatta con i dati di OpenStreetMap: non servono chiavi, account o abbonamenti.
+(Le mappe CARTO «Voyager» del primo progetto, da ottobre 2026, funzionano solo con una chiave API, che su un sito come questo
+finirebbe nel codice pubblico: per questo si usa OpenFreeMap.)
+I programmi della mappa si scaricano da cdnjs e unpkg, sempre nella stessa versione: Leaflet 1.9.4, Leaflet.markercluster 1.5.3,
+MapLibre 5.24.0 (disegna la mappa di sfondo) e il suo collegamento a Leaflet, maplibre-gl-leaflet 0.1.4.
+In basso a destra della mappa restano sempre i crediti OpenFreeMap, OpenMapTiles e OpenStreetMap: non vanno tolti.
+Le versioni sono scritte in `js/sito.js`, in cima alla parte della mappa, ognuna con il suo codice `integrity`:
+se un giorno si cambia versione, vanno cambiati insieme indirizzo e codice. Tutto questo è spiegato anche nella pagina privacy.
+In home la mappa si scarica solo quando si arriva a quel punto della pagina, così la home resta veloce.
+Se un dispositivo molto vecchio non riesce a disegnare la mappa, al suo posto compare un messaggio, e l'elenco dei luoghi resta sempre leggibile.
+
 ## La versione inglese
 
 La versione inglese sta nella cartella `en/` e usa le stesse foto, lo stesso stile e lo stesso `js/sito.js`.
@@ -103,6 +163,7 @@ In alto a destra, in ogni pagina, il pulsante **EN / IT** porta alla stessa pagi
 |---|---|
 | `en/index.html` | La home in inglese |
 | `en/day-trips.html`, `en/weekends-and-stays.html`, `en/big-trips.html` | Le tre sezioni in inglese |
+| `en/map.html` | La mappa dei viaggi in inglese («My travel map») |
 | `en/stories/` | I racconti in inglese, più `_template.html` da copiare |
 | `js/contenuti-en.js` | I testi inglesi delle schede (titolo, frase, luogo, data). Foto, voti ed etichette restano in `js/contenuti.js` |
 

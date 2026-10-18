@@ -69,7 +69,27 @@
     argomenti: [['Domanda su un racconto', 'A question about a story'], ['Segnalazione di un luogo', 'Suggesting a place'], ['Altro', 'Something else']],
     inviaMessaggio: 'Send message',
     errEmailManca: 'Please enter your email address: I need it to reply to you.',
-    errEmailSbagliata: 'This email address doesn’t look right. Please check it.'
+    errEmailSbagliata: 'This email address doesn’t look right. Please check it.',
+    /* «My travel map»: map page, home preview and the list of places */
+    mappa: 'Map', mappaTitolo: 'My travel map', paginaMappa: 'map.html',
+    mappaVoce: 'Interactive map of my trips',
+    mappaTastiera: 'With the keyboard: the arrow keys move the map, + and − zoom in and out, Tab goes from one place to the next and Enter opens its card.',
+    mappaCarica: 'Loading the map…',
+    mappaErrore: 'Sorry, the map could not be loaded. You can find all the places in the list below.',
+    mappaErroreHome: 'Sorry, the map could not be loaded. On the map page you will also find a list of all the places.',
+    datiDa: 'Data from',
+    spostaMappa: 'Move the map', italia: 'Italy', mondo: 'World', zoomPiu: 'Zoom in', zoomMeno: 'Zoom out', chiudiScheda: 'Close the card',
+    dueDita: 'Use two fingers to move the map', oppureTocca: 'or tap it once to unlock it',
+    mappaSbloccata: 'Map unlocked: you can now move it with one finger.',
+    legendaFiltri: 'Key and filters', legenda: 'Key',
+    filtriMappa: 'Tap one or more sections: only their places stay on the map.',
+    simboloPin: 'Pin with the wheelchair: a story', simboloTappa: 'Small dot: a stop on the trip', simboloGruppo: 'Circle with a number: places close together, tap to see them',
+    statoMappaTutti: (n) => (n === 1 ? 'The map shows 1 story.' : `The map shows all ${n} stories.`),
+    statoMappaFiltri: (v, tot, nomi) => `The map shows ${v} of ${tot} ${tot === 1 ? 'story' : 'stories'}: ${nomi}.`,
+    tappa: 'Stop', tappaVoce: (nome, titolo) => `${nome}: a stop in the story “${titolo}”`,
+    giorno: (n) => `Day ${n}`, vaiGiorno: 'Go to this day of the story', vaiPunto: 'Go to this part of the story',
+    gruppo: (n) => `${n} places close together: open to zoom in`,
+    tappeDi: (luogo) => `Stops on the trip: ${luogo}`
   } : {
     nomeSito: 'In viaggio sulle mie ruote', nomeRighe: ['In viaggio', 'sulle mie ruote'], motto: 'senza sorprese', home: 'Home', paginaIniziale: ', pagina iniziale',
     chiSono: 'Chi sono', menuPrincipale: 'Menu principale', menu: 'Menu', chiudi: 'Chiudi',
@@ -116,7 +136,27 @@
     argomenti: [['Domanda su un racconto', 'Domanda su un racconto'], ['Segnalazione di un luogo', 'Segnalazione di un luogo'], ['Altro', 'Altro']],
     inviaMessaggio: 'Invia il messaggio',
     errEmailManca: 'Scrivi il tuo indirizzo e-mail: mi serve per risponderti.',
-    errEmailSbagliata: 'Questo indirizzo e-mail non sembra corretto. Controllalo.'
+    errEmailSbagliata: 'Questo indirizzo e-mail non sembra corretto. Controllalo.',
+    /* «La mappa dei miei viaggi»: pagina della mappa, anteprima in home ed elenco dei luoghi */
+    mappa: 'Mappa', mappaTitolo: 'La mappa dei miei viaggi', paginaMappa: 'mappa.html',
+    mappaVoce: 'Mappa interattiva dei miei viaggi',
+    mappaTastiera: 'Con la tastiera: le frecce spostano la mappa, + e − la ingrandiscono e la rimpiccioliscono, Tab passa da un luogo all’altro e Invio ne apre la scheda.',
+    mappaCarica: 'Sto caricando la mappa…',
+    mappaErrore: 'Non è stato possibile caricare la mappa. Trovi tutti i luoghi nell’elenco qui sotto.',
+    mappaErroreHome: 'Non è stato possibile caricare la mappa. Nella pagina della mappa trovi anche l’elenco di tutti i luoghi.',
+    datiDa: 'Dati da',
+    spostaMappa: 'Sposta la mappa', italia: 'Italia', mondo: 'Mondo', zoomPiu: 'Ingrandisci', zoomMeno: 'Rimpicciolisci', chiudiScheda: 'Chiudi la scheda',
+    dueDita: 'Usa due dita per spostare la mappa', oppureTocca: 'oppure toccala una volta per sbloccarla',
+    mappaSbloccata: 'Mappa sbloccata: ora si sposta anche con un dito.',
+    legendaFiltri: 'Legenda e filtri', legenda: 'Legenda',
+    filtriMappa: 'Tocca una o più sezioni: sulla mappa restano solo i loro luoghi.',
+    simboloPin: 'Segnaposto con la carrozzina: un racconto', simboloTappa: 'Pallino piccolo: una tappa del viaggio', simboloGruppo: 'Cerchio con il numero: luoghi vicini, toccalo per vederli',
+    statoMappaTutti: (n) => (n === 1 ? 'Sulla mappa c’è 1 racconto.' : `Sulla mappa ci sono tutti i ${n} racconti.`),
+    statoMappaFiltri: (v, tot, nomi) => `Sulla mappa: ${T.conta(v)} su ${tot}, ${nomi}.`,
+    tappa: 'Tappa', tappaVoce: (nome, titolo) => `${nome}: tappa del racconto «${titolo}»`,
+    giorno: (n) => `Giorno ${n}`, vaiGiorno: 'Vai a questo giorno del racconto', vaiPunto: 'Vai a questo punto del racconto',
+    gruppo: (n) => `${n} luoghi vicini: aprilo per ingrandire`,
+    tappeDi: (luogo) => `Le tappe del viaggio: ${luogo}`
   };
 
   /* Dimensione del testo scelta l'ultima volta (subito, per evitare salti) */
@@ -216,7 +256,7 @@
       const qui = paginaAttuale();
       const voci = [['home', T.home, 'index.html']]
         .concat(Object.keys(SEZIONI).map((k) => [k, SEZIONI[k].nome, SEZIONI[k].pagina]))
-        .concat([['chi', T.chiSono, 'index.html#chi-sono'], ['contatti', T.contatti, 'index.html#contatti']]);
+        .concat([['mappa', T.mappa, T.paginaMappa], ['chi', T.chiSono, 'index.html#chi-sono'], ['contatti', T.contatti, 'index.html#contatti']]);
       const altra = html.getAttribute('data-altra-lingua');
       const lingua = altra
         ? `<a class="btn-strumento btn-lingua" href="${esc(altra)}" hreflang="${T.altraLinguaCodice}" lang="${T.altraLinguaCodice}" aria-label="${T.altraLinguaVoce}" title="${T.altraLinguaVoce}">${icona('globo')}<span>${T.altraLingua}</span></a>`
@@ -259,6 +299,7 @@
             <nav aria-label="${T.sezioniBlog}">
               <h2>${T.mieiViaggi}</h2>
               <ul>${Object.keys(SEZIONI).map((k) => `<li><a href="${P}${SEZIONI[k].pagina}">${icona(SEZIONI[k].icona)}${SEZIONI[k].nome}</a></li>`).join('')}
+                <li><a href="${P}${T.paginaMappa}">${icona('luogo')}${T.mappaTitolo}</a></li>
                 <li><a href="${P}index.html#come-leggere">${icona('stella')}${T.comeLeggere}</a></li>
               </ul>
             </nav>
@@ -806,6 +847,395 @@
     gestisciModulo(modulo, grazie, regole, () => (c.email.value.trim() ? T.grazie : T.grazieSenzaEmail), T.invia);
   }
 
+  /* ---------- «La mappa dei miei viaggi»: pagina della mappa e anteprima in home ----------
+     Funziona con Leaflet e Leaflet.markercluster; la mappa di sfondo è OpenFreeMap, stile «Positron»,
+     fatta con i dati di OpenStreetMap: gratuita, senza chiavi né account. Per disegnarla servono anche
+     MapLibre e il suo collegamento a Leaflet. Tutte le librerie hanno una versione fissa (cdnjs e unpkg)
+     e sono controllate con il codice «integrity»: se si cambia versione, vanno cambiati insieme indirizzo e codice.
+     I segnaposti arrivano da js/contenuti.js (coordinate e tappe): un racconto nuovo con le coordinate compare da solo. */
+  const LIBRERIE = {
+    stileLeaflet:  ['https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css', 'sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H'],
+    stileMaplibre: ['https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.24.0/maplibre-gl.css', 'sha384-uTttxo/aOKbdE5RlD/SPzSDoDmNvGlUYPjONi2MN/b7c9HPSvW07OIuyP7uL6jxK'],
+    leaflet:       ['https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js', 'sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH'],
+    gruppi:        ['https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js', 'sha384-eXVCORTRlv4FUUgS/xmOyr66XBVraen8ATNLMESp92FKXLAMiKkerixTiBvXriZr'],
+    maplibre:      ['https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.24.0/maplibre-gl.js', 'sha384-5+cfbwT0iiub6VsQAdn6yz16nr6sDiQoHx6tm4O8OVYXHYOxcffFmCJBL0dgdvGp'],
+    ponte:         ['https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.1.4/leaflet-maplibre-gl.js', 'sha384-tXYNKOHx4T02jMP7YYCtBxPIv1B5gaA5mcVPBzqMp6d7VzWzxJgI2aWF/nJLrQdS']
+  };
+  const STILE_MAPPA = 'https://tiles.openfreemap.org/styles/positron';
+  const CREDITI = `<a href="https://openfreemap.org">OpenFreeMap</a> <a href="https://www.openmaptiles.org/">© OpenMapTiles</a> ${T.datiDa} <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>`;
+  const ITALIA = [[36.6, 6.6], [47.1, 18.6]];
+  const COLORI = { gite: 'var(--terracotta)', weekend: 'var(--bosco)', grandi: 'var(--miele-scuro)' };   /* come le card delle sezioni */
+
+  let leafletInArrivo = null;
+  function caricaLeaflet() {
+    if (leafletInArrivo) return leafletInArrivo;
+    const carica = (tag, [indirizzo, impronta]) => new Promise((fatto, errore) => {
+      const el = document.createElement(tag);
+      el.integrity = impronta;
+      el.crossOrigin = 'anonymous';
+      el.onload = fatto;
+      el.onerror = errore;
+      if (tag === 'link') {
+        el.rel = 'stylesheet';
+        el.href = indirizzo;
+        /* prima di stile.css, così colori e caratteri del sito vincono su quelli standard di Leaflet */
+        const nostro = document.querySelector('link[href$="css/stile.css"]');
+        if (nostro) nostro.parentNode.insertBefore(el, nostro); else document.head.appendChild(el);
+      } else {
+        el.src = indirizzo;
+        document.head.appendChild(el);
+      }
+    });
+    const leaflet = carica('script', LIBRERIE.leaflet);
+    const maplibre = carica('script', LIBRERIE.maplibre);
+    leafletInArrivo = Promise.all([
+      carica('link', LIBRERIE.stileLeaflet),
+      carica('link', LIBRERIE.stileMaplibre),
+      leaflet.then(() => carica('script', LIBRERIE.gruppi).catch(() => null)),   /* senza i gruppi la mappa funziona lo stesso */
+      Promise.all([leaflet, maplibre]).then(() => carica('script', LIBRERIE.ponte))
+    ]);
+    return leafletInArrivo;
+  }
+
+  const coordinateValide = (c) => Array.isArray(c) && c.length === 2 && c.every((n) => typeof n === 'number' && isFinite(n));
+  const sezioneDi = (r) => (SEZIONI[r.sezione] ? r.sezione : 'gite');
+  const nomeTappa = (r, t) => (r.nomiTappe && r.nomiTappe[t.nome]) || t.nome;
+  const numeroGiorno = (id) => { const m = /^giorno-(\d+)$/.exec(id || ''); return m ? Number(m[1]) : 0; };
+  const tappeDi = (r) => (r.tappe || []).filter((t) => t && coordinateValide(t.coordinate));
+  const indirizzoTappa = (r, t) => `${P}${esc(r.pagina)}${t.giorno ? '#' + esc(t.giorno) : ''}`;
+
+  function schedaMappaHTML(r) {
+    const k = sezioneDi(r);
+    return `<div class="mappa-scheda">
+        <img class="mappa-scheda-foto" src="${R}${esc(r.copertina)}" alt="${esc(r.copertinaAlt)}" width="400" height="200"${r.copertinaFuoco ? ` style="object-position:${esc(r.copertinaFuoco)}"` : ''}>
+        <div class="mappa-scheda-corpo">
+          <p class="mappa-scheda-sezione"><span class="mappa-segno sez-${k}" aria-hidden="true"></span>${esc(SEZIONI[k].nome)}</p>
+          <p class="mappa-scheda-titolo">${esc(r.titolo)}</p>
+          <ul class="scheda-meta">
+            <li>${icona('luogo')}<span><span class="vh">${T.dove}</span>${esc(r.luogo)} · ${esc(r.regione)}</span></li>
+            <li>${icona('calendario')}<span><span class="vh">${T.quando}</span>${esc(r.dataTesto)}</span></li>
+          </ul>
+          <p class="scheda-voto"><span aria-hidden="true">${T.esperienza}</span> ${votoHTML(r.cuori, 'cuori', T.esperienzaComplessiva)}</p>
+          <a class="btn btn-primario" href="${P}${esc(r.pagina)}">${T.leggi} ${icona('freccia')}</a>
+        </div>
+      </div>`;
+  }
+
+  function schedaTappaHTML(r, t) {
+    const n = numeroGiorno(t.giorno);
+    return `<div class="mappa-scheda mappa-scheda-tappa">
+        <div class="mappa-scheda-corpo">
+          <p class="mappa-scheda-sezione"><span class="mappa-pallino-segno sez-${sezioneDi(r)}" aria-hidden="true"></span>${T.tappa} · ${esc(r.luogo)}</p>
+          <p class="mappa-scheda-titolo">${esc(nomeTappa(r, t))}</p>
+          ${n ? `<p class="mappa-scheda-giorno">${icona('calendario')}<span>${T.giorno(n)}</span></p>` : ''}
+          <a class="btn btn-primario" href="${indirizzoTappa(r, t)}">${t.giorno ? (n ? T.vaiGiorno : T.vaiPunto) : T.leggi} ${icona('freccia')}</a>
+        </div>
+      </div>`;
+  }
+
+  /* sotto la mappa: legenda dei colori; nella pagina della mappa i colori sono anche i filtri per sezione */
+  function legendaMappaHTML(racconti, completa) {
+    const sezioni = Object.keys(SEZIONI).filter((k) => racconti.some((r) => sezioneDi(r) === k));
+    const simboli = `<ul class="mappa-simboli">
+        <li><span class="mappa-segno" aria-hidden="true"></span>${T.simboloPin}</li>
+        <li><span class="mappa-pallino-segno" aria-hidden="true"></span>${T.simboloTappa}</li>
+        <li><span class="mappa-gruppo-segno" aria-hidden="true">3</span>${T.simboloGruppo}</li>
+      </ul>`;
+    if (!completa) {
+      return `<div class="mappa-legenda statica">
+          <p class="mappa-legenda-titolo">${T.legenda}</p>
+          <ul class="mappa-colori">${sezioni.map((k) => `<li><span class="mappa-segno sez-${k}" aria-hidden="true"></span>${SEZIONI[k].nome}</li>`).join('')}</ul>
+          ${simboli}
+        </div>`;
+    }
+    return `<section class="filtri mappa-legenda" aria-labelledby="titolo-legenda">
+        <h2 class="filtri-titolo" id="titolo-legenda">${icona('filtro')}${T.legendaFiltri}</h2>
+        <p class="filtri-aiuto">${T.filtriMappa}</p>
+        <div class="filtri-lista">${sezioni.map((k) => {
+          const n = racconti.filter((r) => sezioneDi(r) === k).length;
+          return `<button type="button" class="filtro" aria-pressed="false" data-sezione="${k}">${icona('spunta')}<span class="mappa-segno sez-${k}" aria-hidden="true"></span><span>${SEZIONI[k].nome}</span><span class="mappa-conta" aria-hidden="true">${n}</span></button>`;
+        }).join('')}<button type="button" class="filtro filtro-azzera" data-azzera-mappa hidden>${icona('chiudi')}<span>${T.togli}</span></button></div>
+        <p class="filtri-stato" data-stato-mappa></p>
+        ${simboli}
+      </section>`;
+  }
+
+  function avviaMappe() {
+    document.querySelectorAll('[data-mappa]').forEach((zona, i) => {
+      const completa = zona.getAttribute('data-mappa') === 'completa';
+      const racconti = RACCONTI.filter((r) => coordinateValide(r.coordinate)).sort(dalPiuRecente);
+      const id = `mappa-${i + 1}`;
+      zona.classList.add('mappa-zona');
+      zona.innerHTML = `<div class="mappa-barra" role="group" aria-label="${T.spostaMappa}">
+          <button type="button" class="btn btn-chiaro mappa-vai" data-vai="italia" aria-controls="${id}">${icona('luogo')}<span>${T.italia}</span></button>
+          <button type="button" class="btn btn-chiaro mappa-vai" data-vai="mondo" aria-controls="${id}">${icona('globo')}<span>${T.mondo}</span></button>
+        </div>
+        <div class="mappa-riquadro">
+          <div class="mappa" id="${id}" role="region" aria-label="${T.mappaVoce}" aria-describedby="${id}-aiuto"></div>
+          <p class="vh" id="${id}-aiuto">${T.mappaTastiera}</p>
+          <p class="mappa-stato" data-carica>${T.mappaCarica}</p>
+          <p class="mappa-avviso" aria-hidden="true"><span>${T.dueDita}</span><small>${T.oppureTocca}</small></p>
+        </div>
+        ${legendaMappaHTML(racconti, completa)}`;
+
+      const disegna = () => caricaLeaflet()
+        .then(() => disegnaMappa(zona, racconti, completa))
+        .catch(() => {
+          let stato = zona.querySelector('[data-carica]');
+          if (!stato) {
+            stato = document.createElement('p');
+            stato.className = 'mappa-stato';
+            zona.querySelector('.mappa-riquadro').appendChild(stato);
+          }
+          stato.textContent = completa ? T.mappaErrore : T.mappaErroreHome;
+          stato.classList.add('errore');
+          zona.querySelector('.mappa-barra').hidden = true;
+        });
+      /* in home Leaflet e le mappe si scaricano solo quando ci si avvicina all'anteprima */
+      if (completa || !window.IntersectionObserver) return disegna();
+      const oss = new IntersectionObserver((voci) => {
+        if (!voci.some((v) => v.isIntersecting)) return;
+        oss.disconnect();
+        disegna();
+      }, { rootMargin: '400px 0px' });
+      oss.observe(zona);
+    });
+  }
+
+  function disegnaMappa(zona, racconti, completa) {
+    const L = window.L;
+    const div = zona.querySelector('.mappa');
+    const riquadro = zona.querySelector('.mappa-riquadro');
+    const fermo = pocoMovimento.matches;
+    const tocco = window.matchMedia('(pointer: coarse)').matches;   /* telefono o tablet */
+
+    const mappa = L.map(div, {
+      zoomControl: false, scrollWheelZoom: false, dragging: !tocco, worldCopyJump: true,
+      minZoom: 1, maxZoom: 18, zoomSnap: 0.5, keyboardPanDelta: 120,
+      zoomAnimation: !fermo, fadeAnimation: !fermo, markerZoomAnimation: !fermo
+    });
+    mappa.attributionControl.setPrefix('<a href="https://leafletjs.com" hreflang="en">Leaflet</a>');
+    L.control.zoom({ position: 'bottomright', zoomInTitle: T.zoomPiu, zoomOutTitle: T.zoomMeno }).addTo(mappa);   /* in basso: in alto coprirebbe la × delle schede */
+    /* la mappa di sfondo (se il dispositivo non sa disegnarla, compare il messaggio di errore).
+       Appena arriva lo stile: nella pagina italiana i nomi di paesi, città e mari diventano italiani (quando la mappa
+       li conosce) e nei filtri dello stile i confronti con un dato che manca valgono «no», senza avvisi in console */
+    const sfondo = L.maplibreGL({ style: STILE_MAPPA, attributionControl: { customAttribution: CREDITI } });
+    const traduci = (v) => (!Array.isArray(v) ? v
+      : v[0] === 'coalesce' && JSON.stringify(v).includes('"name_en"') ? ['coalesce', ['get', 'name:it']].concat(v.slice(1))
+      : v.map(traduci));
+    const ripara = (v) => {
+      if (!Array.isArray(v)) return v;
+      const confronto = { '<': 1e9, '<=': 1e9, '>': -1e9, '>=': -1e9 }[v[0]];
+      if (confronto !== undefined && Array.isArray(v[1]) && v[1][0] === 'get' && typeof v[2] === 'number') return [v[0], ['coalesce', v[1], confronto], v[2]];
+      return v.map(ripara);
+    };
+    sfondo.once('add', () => {
+      const gl = sfondo.getMaplibreMap();
+      gl.once('style.load', () => gl.getStyle().layers.forEach((strato) => {
+        const testo = strato.type === 'symbol' && strato.layout && strato.layout['text-field'];
+        if (testo && !EN) gl.setLayoutProperty(strato.id, 'text-field', traduci(testo));
+        if (strato.filter && JSON.stringify(ripara(strato.filter)) !== JSON.stringify(strato.filter)) gl.setFilter(strato.id, ripara(strato.filter));
+      }));
+    });
+    sfondo.addTo(mappa);
+    zona.querySelector('[data-carica]').remove();
+
+    /* segnaposti: goccia con la carrozzina per il racconto, pallino per le tappe, cerchio con il numero per i gruppi */
+    const opzioniScheda = () => {
+      const larga = Math.max(200, Math.min(280, div.clientWidth - 64));
+      return { maxWidth: larga, minWidth: Math.min(260, larga), autoPanPadding: [16, 16], className: 'mappa-popup' };
+    };
+    const goccia = (k) => L.divIcon({ className: `mappa-pin sez-${k}`, html: `<span class="mappa-goccia" aria-hidden="true">${icona('carrozzina')}</span>`, iconSize: [44, 48], iconAnchor: [22, 44], popupAnchor: [0, -40] });
+    const pallino = (k) => L.divIcon({ className: `mappa-tappa sez-${k}`, html: '<span class="mappa-pallino" aria-hidden="true"></span>', iconSize: [36, 36], iconAnchor: [18, 18], popupAnchor: [0, -12] });
+    const cerchio = (gruppo) => {
+      const figli = gruppo.getAllChildMarkers();
+      const quanti = {};
+      figli.forEach((m) => { quanti[m.options.sezione] = (quanti[m.options.sezione] || 0) + 1; });
+      let da = 0;
+      const fette = Object.keys(COLORI).filter((k) => quanti[k]).map((k) => {
+        const a = da + (quanti[k] / figli.length) * 100;
+        const fetta = `${COLORI[k]} ${da.toFixed(1)}% ${a.toFixed(1)}%`;
+        da = a;
+        return fetta;
+      });
+      return L.divIcon({
+        className: 'mappa-gruppo', iconSize: [48, 48],
+        html: `<span class="mappa-gruppo-cerchio" style="--anello:conic-gradient(${fette.join(', ')})"><span aria-hidden="true">${figli.length}</span><span class="vh">${esc(T.gruppo(figli.length))}</span></span>`
+      });
+    };
+
+    let aperto = null, daTastiera = false;
+    const segni = [];
+    const aggiungi = (latlng, opzioni, scheda) => {
+      const m = L.marker(latlng, opzioni);
+      m.bindPopup(scheda, opzioniScheda());
+      m.on('popupopen', () => { aperto = m; });
+      /* Invio apre la scheda già con Leaflet; qui anche la barra spaziatrice, come per i pulsanti */
+      m.on('keydown', (e) => {
+        const tasto = e.originalEvent;
+        if (tasto.key !== ' ' && tasto.key !== 'Spacebar') return;
+        tasto.preventDefault();
+        daTastiera = true;
+        m.togglePopup();
+      });
+      segni.push(m);
+    };
+    racconti.forEach((r) => {
+      const k = sezioneDi(r);
+      aggiungi(r.coordinate, { icon: goccia(k), title: `${r.titolo} · ${SEZIONI[k].nome}`, riseOnHover: true, zIndexOffset: 500, sezione: k }, () => schedaMappaHTML(r));
+      tappeDi(r).forEach((t) => {
+        aggiungi(t.coordinate, { icon: pallino(k), title: T.tappaVoce(nomeTappa(r, t), r.titolo), sezione: k }, () => schedaTappaHTML(r, t));
+      });
+    });
+
+    /* i luoghi vicini si raggruppano con un numero e si separano ingrandendo */
+    const gruppo = L.markerClusterGroup
+      ? L.markerClusterGroup({
+          maxClusterRadius: 48, showCoverageOnHover: false, spiderfyOnMaxZoom: true, animate: !fermo, iconCreateFunction: cerchio,
+          spiderLegPolylineOptions: { weight: 2, color: '#213b2c', opacity: 0.6 }
+        })
+      : L.layerGroup();
+    const mostra = (scelti) => {
+      gruppo.clearLayers();
+      if (gruppo.addLayers) gruppo.addLayers(scelti); else scelti.forEach((m) => gruppo.addLayer(m));
+    };
+    mostra(segni);
+    gruppo.addTo(mappa);
+
+    const inquadra = (scelti, animata) => {
+      if (!scelti.length) return mappa.setView([25, 0], 2, { animate: animata });
+      mappa.fitBounds(L.latLngBounds(scelti.map((m) => m.getLatLng())), { paddingTopLeft: [40, 64], paddingBottomRight: [40, 28], maxZoom: 11, animate: animata });
+    };
+    inquadra(segni, false);
+    if (window.ResizeObserver) new ResizeObserver(() => mappa.invalidateSize()).observe(div);
+
+    /* schede: testi nella lingua della pagina; con la tastiera il fuoco entra nella scheda e poi torna al segnaposto */
+    div.addEventListener('keydown', (e) => { if (e.key === 'Enter') daTastiera = true; }, true);
+    div.addEventListener('pointerdown', () => { daTastiera = false; }, true);
+    mappa.on('popupopen', (e) => {
+      const el = e.popup.getElement();
+      const chiudi = el.querySelector('.leaflet-popup-close-button');
+      if (chiudi) { chiudi.setAttribute('aria-label', T.chiudiScheda); chiudi.title = T.chiudiScheda; }
+      const link = el.querySelector('.btn');
+      if (daTastiera && link) link.focus({ preventScroll: true });
+    });
+    mappa.on('popupclose', (e) => {
+      const el = e.popup.getElement();
+      const attivo = document.activeElement;
+      const segno = aperto && aperto.getElement();
+      if (segno && (!attivo || attivo === document.body || (el && el.contains(attivo)))) segno.focus({ preventScroll: true });
+      aperto = null;
+    });
+    div.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape' || !aperto) return;
+      e.stopPropagation();
+      mappa.closePopup();
+    });
+
+    /* rotellina del mouse: ingrandisce solo dopo un clic sulla mappa, così non blocca lo scorrimento della pagina */
+    mappa.on('click focus', () => mappa.scrollWheelZoom.enable());
+    div.addEventListener('mouseleave', () => mappa.scrollWheelZoom.disable());
+
+    /* su telefono la mappa non blocca lo scorrimento: si sposta con due dita, oppure con un dito dopo averla toccata una volta */
+    if (tocco) {
+      let sbloccata = false, partenza = null, attesa = 0;
+      const avvisa = () => {
+        riquadro.classList.add('mostra-avviso');
+        clearTimeout(attesa);
+        attesa = setTimeout(() => riquadro.classList.remove('mostra-avviso'), 1800);
+      };
+      div.addEventListener('touchstart', (e) => {
+        partenza = e.touches.length === 1 ? [e.touches[0].clientX, e.touches[0].clientY] : null;
+        if (e.touches.length > 1) riquadro.classList.remove('mostra-avviso');
+      }, { passive: true });
+      div.addEventListener('touchmove', (e) => {
+        if (sbloccata || !partenza || e.touches.length !== 1) return;
+        const t = e.touches[0];
+        if (Math.abs(t.clientX - partenza[0]) + Math.abs(t.clientY - partenza[1]) > 12) { partenza = null; avvisa(); }
+      }, { passive: true });
+      mappa.on('click', () => {
+        if (sbloccata) return;
+        sbloccata = true;
+        mappa.dragging.enable();
+        riquadro.classList.add('sbloccata');
+        riquadro.classList.remove('mostra-avviso');
+        annuncia(T.mappaSbloccata);
+      });
+      document.addEventListener('touchstart', (e) => {
+        if (!sbloccata || riquadro.contains(e.target)) return;
+        sbloccata = false;
+        mappa.dragging.disable();
+        riquadro.classList.remove('sbloccata');
+      }, { passive: true });
+    }
+
+    /* pulsanti «Italia» e «Mondo» */
+    const scelte = new Set();
+    const visibili = () => segni.filter((m) => !scelte.size || scelte.has(m.options.sezione));
+    zona.querySelector('[data-vai="italia"]').addEventListener('click', () => mappa.fitBounds(ITALIA, { padding: [8, 8], animate: !fermo }));
+    zona.querySelector('[data-vai="mondo"]').addEventListener('click', () => inquadra(visibili(), !fermo));
+
+    /* filtri per sezione (solo nella pagina della mappa) */
+    const stato = zona.querySelector('[data-stato-mappa]');
+    if (!stato) return;
+    const azzera = zona.querySelector('[data-azzera-mappa]');
+    function filtra(parla) {
+      const scelti = visibili();
+      mostra(scelti);
+      const quanti = racconti.filter((r) => !scelte.size || scelte.has(sezioneDi(r))).length;
+      zona.querySelectorAll('[data-sezione]').forEach((b) => b.setAttribute('aria-pressed', String(scelte.has(b.getAttribute('data-sezione')))));
+      azzera.hidden = !scelte.size;
+      stato.textContent = scelte.size
+        ? T.statoMappaFiltri(quanti, racconti.length, Array.from(scelte).map((k) => SEZIONI[k].nome.toLowerCase()).join(', '))
+        : T.statoMappaTutti(racconti.length);
+      if (!parla) return;
+      mappa.closePopup();
+      inquadra(scelti, !fermo);
+      annuncia(stato.textContent);
+    }
+    zona.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-sezione], [data-azzera-mappa]');
+      if (!b) return;
+      if (b.hasAttribute('data-azzera-mappa')) {
+        scelte.clear();
+        filtra(true);
+        const primo = zona.querySelector('[data-sezione]');
+        if (primo) primo.focus();
+        return;
+      }
+      const k = b.getAttribute('data-sezione');
+      if (scelte.has(k)) scelte.delete(k); else scelte.add(k);
+      filtra(true);
+    });
+    filtra(false);
+  }
+
+  /* ---------- pagina della mappa: tutti i luoghi in un elenco, divisi per sezione ----------
+     per chi usa un lettore di schermo e per chi preferisce non usare la mappa */
+  function avviaLuoghi() {
+    const zona = document.querySelector('[data-luoghi]');
+    if (!zona) return;
+    const ordinati = RACCONTI.slice().sort(dalPiuRecente);
+    const voce = (r) => {
+      const tappe = tappeDi(r);
+      return `<li>
+          <a class="link" href="${P}${esc(r.pagina)}">${esc(r.titolo)}</a>
+          <span class="luoghi-dove">${esc(r.luogo)} · ${esc(r.regione)} · ${esc(r.dataTesto)}</span>
+          ${tappe.length ? `<ul class="luoghi-tappe" aria-label="${esc(T.tappeDi(r.luogo))}">${tappe.map((t) => {
+            const n = numeroGiorno(t.giorno);
+            return `<li><a href="${indirizzoTappa(r, t)}">${esc(nomeTappa(r, t))}</a>${n ? ` <span class="luoghi-giorno">· ${T.giorno(n)}</span>` : ''}</li>`;
+          }).join('')}</ul>` : ''}
+        </li>`;
+    };
+    zona.innerHTML = `<div class="luoghi-griglia">${Object.keys(SEZIONI).map((k) => {
+      const qui = ordinati.filter((r) => sezioneDi(r) === k);
+      return `<section class="luoghi-sezione sez-${k}" aria-labelledby="luoghi-${k}">
+          <h3 id="luoghi-${k}"><span class="mappa-segno sez-${k}" aria-hidden="true"></span><a class="link" href="${P}${SEZIONI[k].pagina}">${esc(SEZIONI[k].nome)}</a></h3>
+          ${qui.length ? `<ul class="luoghi-lista">${qui.map(voce).join('')}</ul>` : `<p class="luoghi-vuoto">${T.prossimamente}</p>`}
+        </section>`;
+    }).join('')}</div>`;
+  }
+
   /* ---------- comparsa graduale durante lo scroll ---------- */
   function avviaRivela() {
     const voti = Array.from(document.querySelectorAll('.voto'));
@@ -864,6 +1294,8 @@
     avviaLightbox();
     avviaFeedback();
     avviaContatti();
+    avviaMappe();
+    avviaLuoghi();
     preparaImmagini(document);
     avviaRivela();
     avviaTornaSu();

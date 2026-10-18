@@ -2,13 +2,14 @@
    IN VIAGGIO SULLE MIE RUOTE — foglio di stile unico
 
    Indice
-    1. Colori, caratteri e misure      8. Schede dei racconti
-    2. Base                            9. Pagine di sezione e filtri
-    3. Icone                          10. Pagina racconto
-    4. Elementi comuni                11. Lightbox (foto ingrandita)
-    5. Testata                        12. Fondo pagina
-    6. Home: hero                     13. Animazioni
-    7. Home: sezioni                  14. Riduci movimento, contrasto, stampa
+    1. Colori, caratteri e misure      9. Pagine di sezione e filtri
+    2. Base                           10. Pagina racconto
+    3. Icone                          11. Mappa dei viaggi
+    4. Elementi comuni                12. Lightbox (foto ingrandita)
+    5. Testata                        13. Fondo pagina
+    6. Home: hero                     14. Animazioni
+    7. Home: sezioni                  15. Riduci movimento, contrasto, stampa
+    8. Schede dei racconti
    ========================================================================== */
 
 /* 1. COLORI, CARATTERI E MISURE ------------------------------------------- */
@@ -447,6 +448,8 @@ testata-sito { display: block; position: sticky; top: 0; z-index: 50; }
 /* menu in riga con poco spazio: il pulsante del testo resta con la sola icona (lo decide js/sito.js) */
 .nav-stretta .btn-testo .btn-etichetta { display: none; }
 .nav-stretta .btn-testo { padding-inline: .3em; }
+.nav-stretta .nav a { padding-inline: .45em; }            /* così a 1280 px il menu con 7 voci sta ancora in riga */
+.nav-stretta .nav a::after { left: .45em; right: .45em; }
 
 /* menu a comparsa: sito.js lo attiva quando il menu in riga non ci sta */
 .nav-mobile .btn-menu { display: inline-flex; background: var(--bosco); border-color: var(--bosco); color: #fff; }
@@ -715,6 +718,7 @@ testata-sito { display: block; position: sticky; top: 0; z-index: 50; }
 .filtro .i-spunta { display: none; }
 .filtro[aria-pressed="true"] { background: var(--bosco); border-color: var(--bosco); color: #fff; }
 .filtro[aria-pressed="true"] .i-spunta { display: inline-block; }
+.filtro[hidden] { display: none; }        /* «Togli i filtri» compare solo quando c'è almeno un filtro attivo */
 .filtro-azzera { border-style: dashed; border-color: var(--terracotta-testo); color: var(--terracotta-testo); }
 .filtro-azzera:hover { background: var(--terracotta-chiara); }
 .filtri-stato { margin: 1rem 0 0; font-weight: 700; color: var(--bosco); }
@@ -1038,7 +1042,192 @@ testata-sito { display: block; position: sticky; top: 0; z-index: 50; }
 .privacy > :first-child { margin-top: 0; }
 .privacy .nota { font-size: 1rem; }
 
-/* 11. LIGHTBOX ------------------------------------------------------------- */
+/* 11. MAPPA DEI VIAGGI ----------------------------------------------------- */
+/* La disegna js/sito.js con Leaflet (pagina mappa.html e anteprima in home).
+   Qui ci sono anche i colori di Leaflet rifatti con quelli del sito: zoom, schede, crediti.
+   I segnaposti hanno i colori delle card delle sezioni. */
+.sez-gite { --colore-sezione: var(--terracotta); }
+.sez-weekend { --colore-sezione: var(--bosco); }
+.sez-grandi { --colore-sezione: var(--miele-scuro); }
+
+.pagina-testa.testa-mappa .distintivo { background: var(--salvia-scura); }
+
+.mappa-barra { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: .9rem; }
+.mappa-barra[hidden] { display: none; }
+.mappa-vai { padding-inline: 1.3em; }
+.mappa-vai .icona { color: var(--terracotta); }
+.btn.mappa-vai:hover .icona { transform: none; }
+
+.mappa-riquadro {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--sabbia-scura); border-radius: 1.75rem;
+  background: var(--sabbia);
+  box-shadow: var(--ombra);
+  transition: box-shadow .3s;
+}
+/* sul telefono, dopo un tocco la mappa si sposta anche con un dito: il bordo scuro lo fa vedere */
+.mappa-riquadro.sbloccata { box-shadow: 0 0 0 .2rem var(--crema), 0 0 0 .4rem var(--bosco), var(--ombra); }
+.mappa { position: relative; z-index: 0; isolation: isolate; height: min(72vh, 40rem); min-height: 22rem; }
+.mappa-zona[data-mappa="anteprima"] .mappa { height: clamp(23rem, 55vh, 28rem); min-height: 0; }
+@media (max-width: 40em) {
+  .mappa { height: min(70vh, 36rem); height: min(70svh, 36rem); }
+  .mappa-zona[data-mappa="anteprima"] .mappa { height: 23rem; }
+}
+
+.mappa-stato {
+  position: absolute; inset: 0; z-index: 1;
+  display: grid; place-content: center;
+  margin: 0; padding: 1.5rem;
+  font-weight: 700; text-align: center; color: var(--bosco);
+}
+.mappa-stato.errore { background: var(--sabbia); }
+.mappa-avviso {
+  position: absolute; inset: 0; z-index: 2;
+  display: grid; place-content: center; gap: .3rem;
+  margin: 0; padding: 1.5rem;
+  background: rgba(26, 47, 35, .78);
+  color: #fff; font-size: 1.15rem; font-weight: 700; line-height: 1.35; text-align: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s;
+}
+.mappa-avviso small { font-size: .85em; font-weight: 600; }
+.mostra-avviso .mappa-avviso { opacity: 1; }
+
+/* Leaflet nei colori del sito */
+.mappa.leaflet-container { background: #c2c8ca; color: var(--testo); font: inherit; font-size: 1rem; line-height: 1.5; }   /* il colore del mare nella mappa Positron: anche oltre i poli */
+.mappa.leaflet-container a { color: var(--terracotta-testo); }
+.mappa .leaflet-bottom .leaflet-control-zoom { margin-bottom: .6rem; }
+.mappa .leaflet-right .leaflet-control { margin-right: .75rem; }
+.mappa .leaflet-bar {
+  overflow: hidden;
+  border: 2px solid var(--sabbia-scura); border-radius: 1.6rem;
+  background: var(--crema-chiara);
+  box-shadow: var(--ombra-lieve);
+}
+.mappa .leaflet-bar a {
+  display: grid; place-items: center;
+  width: 2.75rem; height: 2.75rem;            /* più di 44 px */
+  border-radius: 0; border-bottom: 1px solid var(--sabbia-scura);
+  background: var(--crema-chiara); color: var(--bosco);
+  font: 700 1.6rem/1 var(--font-testo); text-indent: 0;
+}
+.mappa .leaflet-bar a:last-child { border-bottom: 0; }
+.mappa .leaflet-bar a:hover { background: var(--sabbia); color: var(--bosco); }
+.mappa .leaflet-bar a:focus-visible { outline-offset: -.4rem; box-shadow: none; }
+.mappa .leaflet-bar a.leaflet-disabled { background: var(--crema-chiara); color: var(--sabbia-scura); }
+.mappa .leaflet-control-attribution {
+  padding: .1rem .55rem;
+  border-radius: .7rem 0 0 0;
+  background: rgba(255, 253, 248, .9);
+  color: var(--testo); font-size: .68rem; line-height: 1.45;
+}
+.mappa .leaflet-control-attribution a { color: var(--terracotta-testo); text-decoration: underline; }
+
+/* la scheda che si apre toccando un segnaposto */
+.mappa .leaflet-popup-content-wrapper { padding: 0; overflow: hidden; border-radius: 1.4rem; background: var(--crema-chiara); color: var(--testo); box-shadow: var(--ombra-alta); }
+.mappa .leaflet-popup-content { margin: 0; font-size: .95rem; line-height: 1.45; }
+.mappa .leaflet-popup-tip { background: var(--crema-chiara); box-shadow: none; }
+.mappa a.leaflet-popup-close-button {
+  top: .55rem; right: .55rem; z-index: 1;
+  display: grid; place-items: center;
+  width: 2.75rem; height: 2.75rem;
+  border-radius: 50%;
+  background: var(--crema-chiara); color: var(--bosco);
+  font: 400 1.75rem/1 var(--font-testo);
+  box-shadow: var(--ombra-lieve);
+}
+.mappa a.leaflet-popup-close-button:hover, .mappa a.leaflet-popup-close-button:focus { background: var(--sabbia); color: var(--bosco); }
+.mappa-scheda p, .mappa-scheda ul { margin: 0; }
+.mappa-scheda-foto { display: block; width: 100%; height: auto; aspect-ratio: 2 / 1; object-fit: cover; background: var(--sabbia); }
+.mappa-scheda-corpo { display: grid; gap: .5rem; padding: .85rem 1.1rem 1.1rem; }
+.mappa-scheda-tappa .mappa-scheda-corpo { padding: 1rem 3.7rem 1.1rem 1.1rem; }
+.mappa-scheda-sezione { display: flex; align-items: center; gap: .5rem; font-size: .75rem; font-weight: 700; letter-spacing: .1em; line-height: 1.3; text-transform: uppercase; color: var(--terracotta-testo); }
+.mappa-scheda-titolo { font-family: var(--font-titoli); font-size: 1.25rem; font-weight: 600; line-height: 1.15; color: var(--bosco); }
+.mappa-scheda .scheda-meta { font-size: .85rem; }
+.mappa-scheda .scheda-voto { font-size: .85rem; }
+.mappa-scheda .scheda-voto .voto { font-size: 1rem; }
+.mappa-scheda-giorno { display: flex; align-items: center; gap: .45rem; font-weight: 700; color: var(--bosco); }
+.mappa-scheda-giorno .icona { color: var(--terracotta); }
+.mappa-scheda .btn { justify-self: start; min-height: 2.75rem; margin-top: .3rem; padding: .5em 1.15em; font-size: .92rem; }
+.mappa.leaflet-container .mappa-scheda a.btn-primario { color: #fff; }
+
+/* segnaposti: goccia con la carrozzina (racconto), pallino (tappa), cerchio con il numero (luoghi vicini) */
+.mappa-goccia {
+  position: absolute; left: 5px; top: 3px;
+  display: grid; place-items: center;
+  width: 34px; height: 34px;
+  border: 3px solid #fff; border-radius: 50% 50% 50% 0;
+  background: var(--colore-sezione, var(--terracotta));
+  box-shadow: 0 .3rem .6rem -.15rem rgba(26, 47, 35, .55);
+  transform: rotate(-45deg);
+  transition: transform .25s ease;
+}
+.mappa-goccia .icona { width: 18px; height: 18px; color: #fff; transform: rotate(45deg); }
+.mappa-pin:hover .mappa-goccia, .mappa-pin:focus-visible .mappa-goccia { transform: rotate(-45deg) scale(1.12); }
+.mappa-pallino {
+  position: absolute; left: 50%; top: 50%;
+  width: 20px; height: 20px; margin: -10px 0 0 -10px;
+  border: 3px solid #fff; border-radius: 50%;
+  background: var(--colore-sezione, var(--terracotta));
+  box-shadow: 0 .2rem .45rem -.1rem rgba(26, 47, 35, .6);
+  transition: transform .25s ease;
+}
+.mappa-tappa:hover .mappa-pallino, .mappa-tappa:focus-visible .mappa-pallino { transform: scale(1.25); }
+.mappa-gruppo-cerchio {
+  display: grid; place-items: center;
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle closest-side, var(--crema-chiara) 0 70%, transparent 71%), var(--anello, var(--bosco));
+  box-shadow: 0 0 0 2px #fff, 0 .35rem .8rem -.2rem rgba(26, 47, 35, .55);
+  color: var(--bosco); font-size: 1.05rem; font-weight: 700; line-height: 1;
+  transition: transform .25s ease;
+}
+.mappa-gruppo:hover .mappa-gruppo-cerchio, .mappa-gruppo:focus-visible .mappa-gruppo-cerchio { transform: scale(1.08); }
+/* animazioni dei gruppi (da Leaflet.markercluster) */
+.leaflet-cluster-anim .leaflet-marker-icon, .leaflet-cluster-anim .leaflet-marker-shadow { transition: transform .3s ease-out, opacity .3s ease-in; }
+.leaflet-cluster-spider-leg { transition: stroke-dashoffset .3s ease-out, stroke-opacity .3s ease-in; }
+
+/* legenda e filtri sotto la mappa */
+.mappa-segno, .mappa-pallino-segno { display: inline-block; flex: none; border: 2px solid #fff; background: var(--colore-sezione, var(--salvia-scura)); box-shadow: 0 0 0 1px rgba(26, 47, 35, .3); }
+.mappa-segno { width: .95rem; height: .95rem; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); }
+.mappa-pallino-segno { width: .8rem; height: .8rem; border-radius: 50%; }
+.mappa-gruppo-segno {
+  display: inline-grid; place-items: center; flex: none;
+  width: 1.6rem; height: 1.6rem;
+  border: 3px solid var(--salvia-scura); border-radius: 50%;
+  background: var(--crema-chiara); color: var(--bosco);
+  font-size: .75rem; font-weight: 700; line-height: 1;
+}
+.mappa-legenda { margin: 1.25rem 0 0; }
+.mappa-legenda .filtro .mappa-segno { margin-inline: .15rem .05rem; }
+.mappa-conta { display: inline-grid; place-items: center; min-width: 1.6rem; height: 1.6rem; padding: 0 .4rem; border-radius: 999px; background: var(--sabbia); color: var(--bosco); font-size: .8rem; font-weight: 700; }
+.filtro[aria-pressed="true"] .mappa-conta { background: rgba(255, 255, 255, .2); color: #fff; }
+.mappa-simboli { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; margin: 1rem 0 0; padding: 0; list-style: none; font-size: .88rem; line-height: 1.4; color: var(--testo-tenue); }
+.mappa-simboli li { display: flex; align-items: center; gap: .6rem; margin: 0; }
+.mappa-legenda.statica { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.4rem; padding: 1rem 1.3rem; border-radius: 1.25rem; background: var(--crema-chiara); box-shadow: var(--ombra-lieve); }
+.mappa-legenda.statica .mappa-simboli { flex-basis: 100%; margin: 0; }
+.mappa-legenda-titolo { margin: 0; font-weight: 700; color: var(--bosco); }
+.mappa-colori { display: flex; flex-wrap: wrap; gap: .5rem 1.3rem; margin: 0; padding: 0; list-style: none; font-weight: 600; color: var(--bosco); }
+.mappa-colori li { display: flex; align-items: center; gap: .55rem; margin: 0; }
+.mappa-apri { margin: 1.6rem 0 0; text-align: center; }
+
+/* pagina della mappa: tutti i luoghi in elenco */
+.luoghi { margin-top: clamp(2.5rem, 6vw, 4rem); }
+.luoghi-griglia { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1.5rem; align-items: start; }
+.luoghi-sezione { padding: 1.3rem 1.5rem 1.5rem; border-top: .35rem solid var(--colore-sezione); border-radius: 1.5rem; background: var(--crema-chiara); box-shadow: var(--ombra-lieve); }
+.luoghi-sezione h3 { display: flex; align-items: center; gap: .7rem; margin-bottom: 1rem; font-size: 1.35rem; }
+.luoghi-sezione h3 .mappa-segno { width: 1.05rem; height: 1.05rem; }
+.luoghi-lista { display: grid; gap: 1.1rem; margin: 0; padding: 0; list-style: none; }
+.luoghi-lista > li { margin: 0; }
+.luoghi-dove { display: block; margin-top: .2rem; font-size: .9rem; line-height: 1.45; color: var(--testo-tenue); }
+.luoghi-tappe { margin: .5rem 0 0; padding-left: 1.2rem; font-size: .95rem; }
+.luoghi-tappe li { margin-bottom: .25rem; }
+.luoghi-tappe li::marker { color: var(--colore-sezione); }
+.luoghi-giorno { color: var(--testo-tenue); }
+.luoghi-vuoto { margin: 0; font-weight: 600; color: var(--testo-tenue); }
+
+/* 12. LIGHTBOX ------------------------------------------------------------- */
 .lightbox {
   width: 100vw; max-width: 100vw; height: 100vh; height: 100dvh; max-height: 100dvh;
   margin: 0; padding: 0; border: 0;
@@ -1065,7 +1254,7 @@ testata-sito { display: block; position: sticky; top: 0; z-index: 50; }
 }
 .lightbox button:hover { background: var(--miele); transform: translateY(-2px); }
 
-/* 12. FONDO PAGINA --------------------------------------------------------- */
+/* 13. FONDO PAGINA --------------------------------------------------------- */
 fondo-sito { display: block; }
 .fondo {
   margin-top: clamp(3.5rem, 8vw, 6rem);
@@ -1114,7 +1303,7 @@ fondo-sito { display: block; }
 .torna-su:hover { background: var(--terracotta); }
 .torna-su .icona { width: 1.5rem; height: 1.5rem; }
 
-/* 13. ANIMAZIONI ----------------------------------------------------------- */
+/* 14. ANIMAZIONI ----------------------------------------------------------- */
 /* comparsa graduale durante lo scroll (le classi le mette sito.js) */
 html.js .rivela { opacity: 0; transform: translateY(1.75rem); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
 html.js .rivela.visibile { opacity: 1; transform: none; }
@@ -1134,7 +1323,7 @@ html.js img[loading="lazy"]:not(.caricata) { opacity: 0; }
 @keyframes disegna { to { stroke-dashoffset: 0; } }
 @keyframes respiro { from { transform: scale(1.12); } to { transform: scale(1.2); } }
 
-/* 14. RIDUCI MOVIMENTO, CONTRASTO, STAMPA ---------------------------------- */
+/* 15. RIDUCI MOVIMENTO, CONTRASTO, STAMPA ---------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
@@ -1148,13 +1337,19 @@ html.js img[loading="lazy"]:not(.caricata) { opacity: 0; }
   .hero-foto img { animation: none; }
   .logo-ruota svg { transform: none; }
   .scheda:hover, .sezione-card:hover, .vicino:hover, .btn:hover, .filtro:hover,
-  .scheda:hover img, .sezione-card:hover img, .foto-apri:hover img, .collage figure:hover { transform: none; }
+  .scheda:hover img, .sezione-card:hover img, .foto-apri:hover img, .collage figure:hover,
+  .mappa-tappa:hover .mappa-pallino, .mappa-tappa:focus-visible .mappa-pallino,
+  .mappa-gruppo:hover .mappa-gruppo-cerchio, .mappa-gruppo:focus-visible .mappa-gruppo-cerchio { transform: none; }
+  .mappa-pin:hover .mappa-goccia, .mappa-pin:focus-visible .mappa-goccia { transform: rotate(-45deg); }
 }
 
 @media (forced-colors: active) {
   .icona { forced-color-adjust: none; background-color: CanvasText; }
-  .box, .scheda, .sezione-card, .guida-card, .filtri, .senza-sorprese { border: 1px solid CanvasText; }
+  .box, .scheda, .sezione-card, .guida-card, .filtri, .senza-sorprese, .mappa-riquadro, .luoghi-sezione { border: 1px solid CanvasText; }
   .filtro[aria-pressed="true"] { border-width: 4px; }
+  /* i segnaposti restano nei loro colori, altrimenti sulla mappa sparirebbero */
+  .mappa-goccia, .mappa-pallino, .mappa-gruppo-cerchio, .mappa-segno, .mappa-pallino-segno { forced-color-adjust: none; }
+  .mappa-goccia .icona { background-color: #fff; }
 }
 
 @media (max-width: 26em) {
@@ -1162,7 +1357,7 @@ html.js img[loading="lazy"]:not(.caricata) { opacity: 0; }
 }
 
 @media print {
-  testata-sito, fondo-sito, .indice, .vicini, .torna-su, .filtri, .foto-lente, .salta { display: none !important; }
+  testata-sito, fondo-sito, .indice, .vicini, .torna-su, .filtri, .foto-lente, .salta, .mappa-zona, .mappa-apri { display: none !important; }
   html.js .rivela, html.js img[loading="lazy"] { opacity: 1 !important; transform: none !important; }
   body { background: #fff; font-size: 11pt; }
   .racconto-layout { display: block; }
