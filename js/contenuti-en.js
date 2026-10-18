@@ -15,6 +15,16 @@
    -------------------------------------------------------------------------- */
 window.RACCONTI_EN = {
 
+  ferrara: {
+    pagina: "stories/ferrara-on-my-wheels.html",
+    titolo: "Ferrara on my wheels",
+    sommario: "A day of squares, medieval streets and Renaissance wonders, in the city of bicycles.",
+    luogo: "Ferrara",
+    regione: "Emilia-Romagna",
+    dataTesto: "Saturday 17 October 2026",
+    copertinaAlt: "Anna and her companion smiling in a selfie in front of Castello Estense in Ferrara."
+  },
+
   miami: {
     pagina: "stories/miami-and-the-caribbean-on-my-wheels.html",
     titolo: "Miami and the Caribbean on my wheels",

@@ -358,5 +358,7 @@ Se si cambia `hero.jpg` (la copertina), va rifatta anche `anteprima.jpg`, la fot
 - In home «Gli ultimi racconti» e, in fondo ai racconti, «precedente / successivo» seguono la data del viaggio.
   Solo se si vuole mettere in evidenza in home un viaggio più vecchio, in `js/contenuti.js` si può aggiungere
   al suo blocco `pubblicato: "anno-mese-giorno"` con la data di messa online.
+- Se un racconto cita delle fonti per i cenni storici o gastronomici, vanno in fondo alla scheda «Il mio senza sorprese»,
+  sotto l'avvertenza, in un paragrafo `<p class="riferimenti">…</p>` (testo piccolo): l'esempio è in `racconti/ferrara-sulle-mie-ruote.html`.
 - Per un racconto di più giorni con molte foto (come `racconti/miami-sulle-mie-ruote.html`, 12 giorni e 106 foto) conviene copiare da lì:
   titoli dei giorni, gallerie da 2 o 3 foto e, nella scheda finale, i riquadri `nota` con un elenco di informazioni da ricordare.

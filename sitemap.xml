@@ -124,6 +124,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/racconti/miami-sulle-mie-ruote.html"/>
   </url>
   <url>
+    <loc>https://inviaggiosullemieruote.com/racconti/ferrara-sulle-mie-ruote.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/racconti/ferrara-sulle-mie-ruote.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/stories/ferrara-on-my-wheels.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/racconti/ferrara-sulle-mie-ruote.html"/>
+  </url>
+  <url>
+    <loc>https://inviaggiosullemieruote.com/en/stories/ferrara-on-my-wheels.html</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/racconti/ferrara-sulle-mie-ruote.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/stories/ferrara-on-my-wheels.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://inviaggiosullemieruote.com/racconti/ferrara-sulle-mie-ruote.html"/>
+  </url>
+  <url>
     <loc>https://inviaggiosullemieruote.com/privacy.html</loc>
     <xhtml:link rel="alternate" hreflang="it" href="https://inviaggiosullemieruote.com/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://inviaggiosullemieruote.com/en/privacy.html"/>

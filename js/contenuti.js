@@ -57,6 +57,23 @@ window.SITO = {
    -------------------------------------------------------------------------- */
 window.RACCONTI = [
   {
+    id: "ferrara",
+    pagina: "racconti/ferrara-sulle-mie-ruote.html",
+    titolo: "Ferrara sulle mie ruote",
+    sommario: "Una giornata tra piazze, strade medievali e meraviglie del Rinascimento, nella città delle biciclette.",
+    sezione: "gite",
+    luogo: "Ferrara",
+    regione: "Emilia-Romagna",
+    data: "2026-10-17",
+    dataTesto: "Sabato 17 ottobre 2026",
+    copertina: "img/ferrara/castello-estense-card.webp",
+    copertinaAlt: "Anna e il suo accompagnatore sorridono in un selfie davanti al Castello Estense di Ferrara.",
+    copertinaFuoco: "center 80%",
+    cuori: 5,
+    tag: ["bagno"],
+    coordinate: [44.8353, 11.6200]
+  },
+  {
     id: "miami",
     pagina: "racconti/miami-sulle-mie-ruote.html",
     titolo: "Miami e i Caraibi sulle mie ruote",
