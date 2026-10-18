@@ -147,7 +147,10 @@ fatta con i dati di OpenStreetMap: non servono chiavi, account o abbonamenti.
 finirebbe nel codice pubblico: per questo si usa OpenFreeMap.)
 I programmi della mappa si scaricano da cdnjs e unpkg, sempre nella stessa versione: Leaflet 1.9.4, Leaflet.markercluster 1.5.3,
 MapLibre 5.24.0 (disegna la mappa di sfondo) e il suo collegamento a Leaflet, maplibre-gl-leaflet 0.1.4.
-In basso a destra della mappa restano sempre i crediti OpenFreeMap, OpenMapTiles e OpenStreetMap: non vanno tolti.
+In basso a sinistra della mappa ci sono i crediti «© OpenStreetMap © OpenMapTiles»: si vedono quando la mappa compare
+e dopo 5 secondi, o appena la mappa si muove, si riducono a una piccola «i» che, toccata, li fa ricomparire.
+**Non vanno tolti:** sono obbligatori per le licenze dei dati di OpenStreetMap e delle mappe OpenMapTiles
+(le regole di OpenStreetMap permettono di ridurli così, ma non di eliminarli).
 Le versioni sono scritte in `js/sito.js`, in cima alla parte della mappa, ognuna con il suo codice `integrity`:
 se un giorno si cambia versione, vanno cambiati insieme indirizzo e codice. Tutto questo è spiegato anche nella pagina privacy.
 In home la mappa si scarica solo quando si arriva a quel punto della pagina, così la home resta veloce.

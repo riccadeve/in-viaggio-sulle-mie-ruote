@@ -76,7 +76,7 @@
     mappaTastiera: 'With the keyboard: the arrow keys move the map, + and − zoom in and out, Tab goes from one place to the next and Enter opens its card.',
     mappaCarica: 'Loading the map…',
     mappaErrore: 'Sorry, the map could not be loaded. You can find all the stories in the blog sections, from the menu at the top.',
-    datiDa: 'Data from',
+    creditiMappa: 'Map credits',
     spostaMappa: 'Move the map', italia: 'Italy', mondo: 'World', zoomPiu: 'Zoom in', zoomMeno: 'Zoom out', chiudiScheda: 'Close the card',
     dueDita: 'Use two fingers to move the map', oppureTocca: 'or tap it once to unlock it',
     mappaSbloccata: 'Map unlocked: you can now move it with one finger.',
@@ -141,7 +141,7 @@
     mappaTastiera: 'Con la tastiera: le frecce spostano la mappa, + e − la ingrandiscono e la rimpiccioliscono, Tab passa da un luogo all’altro e Invio ne apre la scheda.',
     mappaCarica: 'Sto caricando la mappa…',
     mappaErrore: 'Non è stato possibile caricare la mappa. Trovi tutti i racconti nelle sezioni del blog, dal menu in alto.',
-    datiDa: 'Dati da',
+    creditiMappa: 'Crediti della mappa',
     spostaMappa: 'Sposta la mappa', italia: 'Italia', mondo: 'Mondo', zoomPiu: 'Ingrandisci', zoomMeno: 'Rimpicciolisci', chiudiScheda: 'Chiudi la scheda',
     dueDita: 'Usa due dita per spostare la mappa', oppureTocca: 'oppure toccala una volta per sbloccarla',
     mappaSbloccata: 'Mappa sbloccata: ora si sposta anche con un dito.',
@@ -858,7 +858,8 @@
     ponte:         ['https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.1.4/leaflet-maplibre-gl.js', 'sha384-tXYNKOHx4T02jMP7YYCtBxPIv1B5gaA5mcVPBzqMp6d7VzWzxJgI2aWF/nJLrQdS']
   };
   const STILE_MAPPA = 'https://tiles.openfreemap.org/styles/positron';
-  const CREDITI = `<a href="https://openfreemap.org">OpenFreeMap</a> <a href="https://www.openmaptiles.org/">© OpenMapTiles</a> ${T.datiDa} <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>`;
+  /* crediti obbligatori per le licenze dei dati (OpenStreetMap) e delle mappe (OpenMapTiles): non vanno tolti */
+  const CREDITI = '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap</a> <a href="https://www.openmaptiles.org/">© OpenMapTiles</a>';
   const ITALIA = [[36.6, 6.6], [47.1, 18.6]];
   const COLORI = { gite: 'var(--terracotta)', weekend: 'var(--bosco)', grandi: 'var(--miele-scuro)' };   /* come le card delle sezioni */
 
@@ -1006,16 +1007,15 @@
     const tocco = window.matchMedia('(pointer: coarse)').matches;   /* telefono o tablet */
 
     const mappa = L.map(div, {
-      zoomControl: false, scrollWheelZoom: false, dragging: !tocco, worldCopyJump: true,
+      zoomControl: false, attributionControl: false, scrollWheelZoom: false, dragging: !tocco, worldCopyJump: true,
       minZoom: 1, maxZoom: 18, zoomSnap: 0.5, keyboardPanDelta: 120,
       zoomAnimation: !fermo, fadeAnimation: !fermo, markerZoomAnimation: !fermo
     });
-    mappa.attributionControl.setPrefix('<a href="https://leafletjs.com" hreflang="en">Leaflet</a>');
     L.control.zoom({ position: 'bottomright', zoomInTitle: T.zoomPiu, zoomOutTitle: T.zoomMeno }).addTo(mappa);   /* in basso: in alto coprirebbe la × delle schede */
     /* la mappa di sfondo (se il dispositivo non sa disegnarla, compare il messaggio di errore).
        Appena arriva lo stile: nella pagina italiana i nomi di paesi, città e mari diventano italiani (quando la mappa
        li conosce) e nei filtri dello stile i confronti con un dato che manca valgono «no», senza avvisi in console */
-    const sfondo = L.maplibreGL({ style: STILE_MAPPA, attributionControl: { customAttribution: CREDITI } });
+    const sfondo = L.maplibreGL({ style: STILE_MAPPA });
     const traduci = (v) => (!Array.isArray(v) ? v
       : v[0] === 'coalesce' && JSON.stringify(v).includes('"name_en"') ? ['coalesce', ['get', 'name:it']].concat(v.slice(1))
       : v.map(traduci));
@@ -1107,6 +1107,31 @@
     };
     inquadra(segni, false);
     if (window.ResizeObserver) new ResizeObserver(() => mappa.invalidateSize()).observe(div);
+
+    /* crediti della mappa in basso a sinistra: si vedono quando la mappa compare; dopo 5 secondi, o appena la mappa
+       si muove, si riducono a una «i» che li fa ricomparire (come permettono le regole di OpenStreetMap) */
+    const crediti = L.control({ position: 'bottomleft' });
+    crediti.onAdd = () => {
+      const box = L.DomUtil.create('div', 'mappa-crediti aperti');
+      box.innerHTML = `<button type="button" class="mappa-crediti-i" aria-expanded="true" title="${T.creditiMappa}"><span aria-hidden="true">i</span><span class="vh">${T.creditiMappa}</span></button><span class="mappa-crediti-testo">${CREDITI}</span>`;
+      L.DomEvent.disableClickPropagation(box);
+      return box;
+    };
+    crediti.addTo(mappa);
+    const boxCrediti = crediti.getContainer();
+    const btnCrediti = boxCrediti.querySelector('button');
+    const mostraCrediti = (aperti) => { boxCrediti.classList.toggle('aperti', aperti); btnCrediti.setAttribute('aria-expanded', String(aperti)); };
+    btnCrediti.addEventListener('click', () => mostraCrediti(!boxCrediti.classList.contains('aperti')));
+    mappa.on('movestart', () => mostraCrediti(false));
+    const chiudiTraPoco = () => setTimeout(() => mostraCrediti(false), 5000);
+    if (window.IntersectionObserver) {
+      const vista = new IntersectionObserver((voci) => {
+        if (!voci.some((v) => v.isIntersecting)) return;
+        vista.disconnect();
+        chiudiTraPoco();
+      }, { threshold: 0.5 });
+      vista.observe(div);
+    } else chiudiTraPoco();
 
     /* schede: testi nella lingua della pagina; con la tastiera il fuoco entra nella scheda e poi torna al segnaposto */
     div.addEventListener('keydown', (e) => { if (e.key === 'Enter') daTastiera = true; }, true);

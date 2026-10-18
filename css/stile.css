@@ -1117,13 +1117,28 @@ testata-sito { display: block; position: sticky; top: 0; z-index: 50; }
 .mappa .leaflet-bar a:hover { background: var(--sabbia); color: var(--bosco); }
 .mappa .leaflet-bar a:focus-visible { outline-offset: -.4rem; box-shadow: none; }
 .mappa .leaflet-bar a.leaflet-disabled { background: var(--crema-chiara); color: var(--sabbia-scura); }
-.mappa .leaflet-control-attribution {
-  padding: .1rem .55rem;
-  border-radius: .7rem 0 0 0;
-  background: rgba(255, 253, 248, .9);
-  color: var(--testo); font-size: .68rem; line-height: 1.45;
+/* crediti della mappa: all'inizio visibili, poi ridotti alla «i» (lo decide js/sito.js) */
+.mappa .leaflet-left .mappa-crediti { margin-left: .35rem; }
+.mappa .leaflet-bottom .mappa-crediti { margin-bottom: .35rem; }
+.mappa-crediti { display: flex; align-items: center; font-size: .68rem; line-height: 1.45; }
+.mappa-crediti-i {
+  display: grid; place-items: center; flex: none;
+  width: 44px; height: 44px;                 /* area da toccare comoda, il cerchio visibile è più piccolo */
+  margin: 0; padding: 0; border: 0;
+  background: none; cursor: pointer;
 }
-.mappa .leaflet-control-attribution a { color: var(--terracotta-testo); text-decoration: underline; }
+.mappa-crediti-i span[aria-hidden] {
+  display: grid; place-items: center;
+  width: 1.5rem; height: 1.5rem;
+  border: 1px solid var(--sabbia-scura); border-radius: 50%;
+  background: rgba(255, 253, 248, .94); color: var(--bosco);
+  font: italic 700 .95rem/1 var(--font-titoli);
+  box-shadow: var(--ombra-lieve);
+}
+.mappa-crediti-i:hover span[aria-hidden] { background: var(--sabbia); }
+.mappa-crediti-testo { padding: .15rem .6rem; border-radius: .7rem; background: rgba(255, 253, 248, .94); color: var(--testo); }
+.mappa-crediti:not(.aperti) .mappa-crediti-testo { display: none; }
+.mappa.leaflet-container .mappa-crediti-testo a { color: var(--terracotta-testo); text-decoration: underline; }
 
 /* la scheda che si apre toccando un segnaposto */
 .mappa .leaflet-popup-content-wrapper { padding: 0; overflow: hidden; border-radius: 1.4rem; background: var(--crema-chiara); color: var(--testo); box-shadow: var(--ombra-alta); }
