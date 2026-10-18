@@ -9,7 +9,7 @@ Per vederlo basta un doppio clic su `index.html`. Per metterlo online si carica 
 |---|---|
 | `index.html` | La home (hero, chi sono, come leggere i racconti, le tre sezioni, anteprima della mappa, ultimi racconti, «Scrivimi») |
 | `gite-fuori-porta.html`, `weekend-e-soggiorni.html`, `grandi-viaggi.html` | Le tre pagine di sezione |
-| `mappa.html` | «La mappa dei miei viaggi»: la mappa con un segnaposto per ogni luogo e, sotto, l'elenco dei luoghi (vedi «La mappa dei miei viaggi») |
+| `mappa.html` | «La mappa dei miei viaggi»: la mappa con un segnaposto per ogni luogo, la legenda e i filtri per sezione (vedi «La mappa dei miei viaggi») |
 | `racconti/` | Una pagina per ogni racconto, più `_modello.html` da copiare |
 | `js/contenuti.js` | **Elenco dei racconti** (e, in cima, autrice e profili social): è il file da aggiornare a ogni pubblicazione |
 | `js/sito.js`, `css/stile.css` | Funzionamento e aspetto del sito: di norma non si toccano |
@@ -101,8 +101,7 @@ I racconti si scrivono al passato («siamo arrivati», «abbiamo scelto»); rest
 
 `mappa.html` (in inglese `en/map.html`, voce **Mappa** del menu) mostra un segnaposto per ogni racconto, in Italia e nel mondo.
 In home, dopo «Dove andiamo?», c'è un'anteprima più bassa della stessa mappa con il pulsante «Apri la mappa completa».
-La mappa legge i luoghi da `js/contenuti.js`: un racconto nuovo con le coordinate compare da solo, in tutte e due le lingue,
-sulla mappa e nell'elenco dei luoghi sotto la mappa.
+La mappa legge i luoghi da `js/contenuti.js`: un racconto nuovo con le coordinate compare da solo sulla mappa, in tutte e due le lingue.
 
 **Le coordinate di un racconto nuovo.** Nel blocco del racconto in `js/contenuti.js` si aggiunge una riga:
 
@@ -152,7 +151,7 @@ In basso a destra della mappa restano sempre i crediti OpenFreeMap, OpenMapTiles
 Le versioni sono scritte in `js/sito.js`, in cima alla parte della mappa, ognuna con il suo codice `integrity`:
 se un giorno si cambia versione, vanno cambiati insieme indirizzo e codice. Tutto questo è spiegato anche nella pagina privacy.
 In home la mappa si scarica solo quando si arriva a quel punto della pagina, così la home resta veloce.
-Se un dispositivo molto vecchio non riesce a disegnare la mappa, al suo posto compare un messaggio, e l'elenco dei luoghi resta sempre leggibile.
+Se un dispositivo molto vecchio non riesce a disegnare la mappa, al suo posto compare un messaggio che rimanda alle sezioni del blog.
 
 ## La versione inglese
 
@@ -358,7 +357,5 @@ Se si cambia `hero.jpg` (la copertina), va rifatta anche `anteprima.jpg`, la fot
 - In home «Gli ultimi racconti» e, in fondo ai racconti, «precedente / successivo» seguono la data del viaggio.
   Solo se si vuole mettere in evidenza in home un viaggio più vecchio, in `js/contenuti.js` si può aggiungere
   al suo blocco `pubblicato: "anno-mese-giorno"` con la data di messa online.
-- Se un racconto cita delle fonti per i cenni storici o gastronomici, vanno in fondo alla scheda «Il mio senza sorprese»,
-  sotto l'avvertenza, in un paragrafo `<p class="riferimenti">…</p>` (testo piccolo): l'esempio è in `racconti/ferrara-sulle-mie-ruote.html`.
 - Per un racconto di più giorni con molte foto (come `racconti/miami-sulle-mie-ruote.html`, 12 giorni e 106 foto) conviene copiare da lì:
   titoli dei giorni, gallerie da 2 o 3 foto e, nella scheda finale, i riquadri `nota` con un elenco di informazioni da ricordare.

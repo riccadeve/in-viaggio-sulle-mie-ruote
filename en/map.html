@@ -36,7 +36,7 @@
 </head>
 <body>
   <a class="salta" href="#contenuto">Skip to content</a>
-  <noscript><p class="senza-js">The map and the list of places need JavaScript turned on. Meanwhile: <a href="day-trips.html">Day trips</a> · <a href="weekends-and-stays.html">Weekends and stays</a> · <a href="big-trips.html">Big trips</a></p></noscript>
+  <noscript><p class="senza-js">The map needs JavaScript turned on. Meanwhile: <a href="day-trips.html">Day trips</a> · <a href="weekends-and-stays.html">Weekends and stays</a> · <a href="big-trips.html">Big trips</a></p></noscript>
   <testata-sito></testata-sito>
 
   <main id="contenuto" tabindex="-1">
@@ -53,15 +53,6 @@
     <div class="sezione contenitore">
       <!-- la mappa la disegna js/sito.js con i luoghi di js/contenuti.js (coordinate e tappe di ogni racconto) -->
       <div data-mappa="completa"></div>
-
-      <section class="luoghi" aria-labelledby="titolo-luoghi">
-        <div class="intestazione">
-          <h2 id="titolo-luoghi">All the places, as a list</h2>
-          <p>The same places as on the map, sorted by section, with links to the stories and to the days of each stop.</p>
-        </div>
-        <!-- l'elenco arriva da js/contenuti.js -->
-        <div data-luoghi></div>
-      </section>
     </div>
   </main>
 

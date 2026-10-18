@@ -949,10 +949,6 @@ testata-sito { display: block; position: sticky; top: 0; z-index: 50; }
 
 .avvertenza { display: flex; gap: .9rem; margin: 2rem 0 0; font-size: .92rem; line-height: 1.55; color: var(--testo-tenue); }
 .avvertenza .icona { flex: none; margin-top: .15rem; color: var(--terracotta); }
-/* sotto l'avvertenza, in piccolo: le fonti dei brevi cenni storici e gastronomici */
-.riferimenti { margin: 1rem 0 0; font-size: .88rem; line-height: 1.6; color: var(--testo-tenue); }
-.prosa .riferimenti a { font-weight: 400; }
-
 /* racconto precedente / successivo */
 .vicini { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin-top: clamp(2.5rem, 6vw, 4rem); }
 .vicino {
@@ -1077,7 +1073,7 @@ testata-sito { display: block; position: sticky; top: 0; z-index: 50; }
 .mappa-zona[data-mappa="anteprima"] .mappa { height: clamp(23rem, 55vh, 28rem); min-height: 0; }
 @media (max-width: 40em) {
   .mappa { height: min(70vh, 36rem); height: min(70svh, 36rem); }
-  .mappa-zona[data-mappa="anteprima"] .mappa { height: 23rem; }
+  .mappa-zona[data-mappa="anteprima"] .mappa { height: 27rem; }   /* alta abbastanza perché la scheda di un racconto ci stia intera */
 }
 
 .mappa-stato {
@@ -1155,6 +1151,14 @@ testata-sito { display: block; position: sticky; top: 0; z-index: 50; }
 .mappa-scheda-giorno { display: flex; align-items: center; gap: .45rem; font-weight: 700; color: var(--bosco); }
 .mappa-scheda-giorno .icona { color: var(--terracotta); }
 .mappa-scheda .btn { justify-self: start; min-height: 2.75rem; margin-top: .3rem; padding: .5em 1.15em; font-size: .92rem; }
+/* sul telefono la scheda è più compatta: foto più bassa, spazi più stretti */
+@media (max-width: 40em) {
+  .mappa-scheda-foto { aspect-ratio: 5 / 2; }
+  .mappa-scheda-corpo { gap: .35rem; padding: .7rem .95rem .9rem; }
+  .mappa-scheda-tappa .mappa-scheda-corpo { padding: .8rem 3.5rem .9rem .95rem; }
+  .mappa-scheda-titolo { font-size: 1.12rem; }
+  .mappa-scheda .btn { margin-top: .15rem; }
+}
 .mappa.leaflet-container .mappa-scheda a.btn-primario { color: #fff; }
 
 /* segnaposti: goccia con la carrozzina (racconto), pallino (tappa), cerchio con il numero (luoghi vicini) */
@@ -1217,20 +1221,6 @@ testata-sito { display: block; position: sticky; top: 0; z-index: 50; }
 .mappa-colori li { display: flex; align-items: center; gap: .55rem; margin: 0; }
 .mappa-apri { margin: 1.6rem 0 0; text-align: center; }
 
-/* pagina della mappa: tutti i luoghi in elenco */
-.luoghi { margin-top: clamp(2.5rem, 6vw, 4rem); }
-.luoghi-griglia { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1.5rem; align-items: start; }
-.luoghi-sezione { padding: 1.3rem 1.5rem 1.5rem; border-top: .35rem solid var(--colore-sezione); border-radius: 1.5rem; background: var(--crema-chiara); box-shadow: var(--ombra-lieve); }
-.luoghi-sezione h3 { display: flex; align-items: center; gap: .7rem; margin-bottom: 1rem; font-size: 1.35rem; }
-.luoghi-sezione h3 .mappa-segno { width: 1.05rem; height: 1.05rem; }
-.luoghi-lista { display: grid; gap: 1.1rem; margin: 0; padding: 0; list-style: none; }
-.luoghi-lista > li { margin: 0; }
-.luoghi-dove { display: block; margin-top: .2rem; font-size: .9rem; line-height: 1.45; color: var(--testo-tenue); }
-.luoghi-tappe { margin: .5rem 0 0; padding-left: 1.2rem; font-size: .95rem; }
-.luoghi-tappe li { margin-bottom: .25rem; }
-.luoghi-tappe li::marker { color: var(--colore-sezione); }
-.luoghi-giorno { color: var(--testo-tenue); }
-.luoghi-vuoto { margin: 0; font-weight: 600; color: var(--testo-tenue); }
 
 /* 12. LIGHTBOX ------------------------------------------------------------- */
 .lightbox {
@@ -1350,7 +1340,7 @@ html.js img[loading="lazy"]:not(.caricata) { opacity: 0; }
 
 @media (forced-colors: active) {
   .icona { forced-color-adjust: none; background-color: CanvasText; }
-  .box, .scheda, .sezione-card, .guida-card, .filtri, .senza-sorprese, .mappa-riquadro, .luoghi-sezione { border: 1px solid CanvasText; }
+  .box, .scheda, .sezione-card, .guida-card, .filtri, .senza-sorprese, .mappa-riquadro { border: 1px solid CanvasText; }
   .filtro[aria-pressed="true"] { border-width: 4px; }
   /* i segnaposti restano nei loro colori, altrimenti sulla mappa sparirebbero */
   .mappa-goccia, .mappa-pallino, .mappa-gruppo-cerchio, .mappa-segno, .mappa-pallino-segno { forced-color-adjust: none; }

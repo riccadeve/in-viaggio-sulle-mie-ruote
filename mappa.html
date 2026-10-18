@@ -35,7 +35,7 @@
 </head>
 <body>
   <a class="salta" href="#contenuto">Vai al contenuto</a>
-  <noscript><p class="senza-js">Per vedere la mappa e l’elenco dei luoghi serve JavaScript attivo. Intanto: <a href="gite-fuori-porta.html">Gite fuori porta</a> · <a href="weekend-e-soggiorni.html">Weekend e soggiorni</a> · <a href="grandi-viaggi.html">Grandi viaggi</a></p></noscript>
+  <noscript><p class="senza-js">Per vedere la mappa serve JavaScript attivo. Intanto: <a href="gite-fuori-porta.html">Gite fuori porta</a> · <a href="weekend-e-soggiorni.html">Weekend e soggiorni</a> · <a href="grandi-viaggi.html">Grandi viaggi</a></p></noscript>
   <testata-sito></testata-sito>
 
   <main id="contenuto" tabindex="-1">
@@ -52,15 +52,6 @@
     <div class="sezione contenitore">
       <!-- la mappa la disegna js/sito.js con i luoghi di js/contenuti.js (coordinate e tappe di ogni racconto) -->
       <div data-mappa="completa"></div>
-
-      <section class="luoghi" aria-labelledby="titolo-luoghi">
-        <div class="intestazione">
-          <h2 id="titolo-luoghi">Tutti i luoghi, in elenco</h2>
-          <p>Gli stessi luoghi della mappa, divisi per sezione, con i collegamenti ai racconti e ai giorni delle tappe.</p>
-        </div>
-        <!-- l'elenco arriva da js/contenuti.js -->
-        <div data-luoghi></div>
-      </section>
     </div>
   </main>
 

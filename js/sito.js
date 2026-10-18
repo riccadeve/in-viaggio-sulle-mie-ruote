@@ -70,13 +70,12 @@
     inviaMessaggio: 'Send message',
     errEmailManca: 'Please enter your email address: I need it to reply to you.',
     errEmailSbagliata: 'This email address doesn’t look right. Please check it.',
-    /* «My travel map»: map page, home preview and the list of places */
+    /* «My travel map»: map page and home preview */
     mappa: 'Map', mappaTitolo: 'My travel map', paginaMappa: 'map.html',
     mappaVoce: 'Interactive map of my trips',
     mappaTastiera: 'With the keyboard: the arrow keys move the map, + and − zoom in and out, Tab goes from one place to the next and Enter opens its card.',
     mappaCarica: 'Loading the map…',
-    mappaErrore: 'Sorry, the map could not be loaded. You can find all the places in the list below.',
-    mappaErroreHome: 'Sorry, the map could not be loaded. On the map page you will also find a list of all the places.',
+    mappaErrore: 'Sorry, the map could not be loaded. You can find all the stories in the blog sections, from the menu at the top.',
     datiDa: 'Data from',
     spostaMappa: 'Move the map', italia: 'Italy', mondo: 'World', zoomPiu: 'Zoom in', zoomMeno: 'Zoom out', chiudiScheda: 'Close the card',
     dueDita: 'Use two fingers to move the map', oppureTocca: 'or tap it once to unlock it',
@@ -88,8 +87,7 @@
     statoMappaFiltri: (v, tot, nomi) => `The map shows ${v} of ${tot} ${tot === 1 ? 'story' : 'stories'}: ${nomi}.`,
     tappa: 'Stop', tappaVoce: (nome, titolo) => `${nome}: a stop in the story “${titolo}”`,
     giorno: (n) => `Day ${n}`, vaiGiorno: 'Go to this day of the story', vaiPunto: 'Go to this part of the story',
-    gruppo: (n) => `${n} places close together: open to zoom in`,
-    tappeDi: (luogo) => `Stops on the trip: ${luogo}`
+    gruppo: (n) => `${n} places close together: open to zoom in`
   } : {
     nomeSito: 'In viaggio sulle mie ruote', nomeRighe: ['In viaggio', 'sulle mie ruote'], motto: 'senza sorprese', home: 'Home', paginaIniziale: ', pagina iniziale',
     chiSono: 'Chi sono', menuPrincipale: 'Menu principale', menu: 'Menu', chiudi: 'Chiudi',
@@ -137,13 +135,12 @@
     inviaMessaggio: 'Invia il messaggio',
     errEmailManca: 'Scrivi il tuo indirizzo e-mail: mi serve per risponderti.',
     errEmailSbagliata: 'Questo indirizzo e-mail non sembra corretto. Controllalo.',
-    /* «La mappa dei miei viaggi»: pagina della mappa, anteprima in home ed elenco dei luoghi */
+    /* «La mappa dei miei viaggi»: pagina della mappa e anteprima in home */
     mappa: 'Mappa', mappaTitolo: 'La mappa dei miei viaggi', paginaMappa: 'mappa.html',
     mappaVoce: 'Mappa interattiva dei miei viaggi',
     mappaTastiera: 'Con la tastiera: le frecce spostano la mappa, + e − la ingrandiscono e la rimpiccioliscono, Tab passa da un luogo all’altro e Invio ne apre la scheda.',
     mappaCarica: 'Sto caricando la mappa…',
-    mappaErrore: 'Non è stato possibile caricare la mappa. Trovi tutti i luoghi nell’elenco qui sotto.',
-    mappaErroreHome: 'Non è stato possibile caricare la mappa. Nella pagina della mappa trovi anche l’elenco di tutti i luoghi.',
+    mappaErrore: 'Non è stato possibile caricare la mappa. Trovi tutti i racconti nelle sezioni del blog, dal menu in alto.',
     datiDa: 'Dati da',
     spostaMappa: 'Sposta la mappa', italia: 'Italia', mondo: 'Mondo', zoomPiu: 'Ingrandisci', zoomMeno: 'Rimpicciolisci', chiudiScheda: 'Chiudi la scheda',
     dueDita: 'Usa due dita per spostare la mappa', oppureTocca: 'oppure toccala una volta per sbloccarla',
@@ -155,8 +152,7 @@
     statoMappaFiltri: (v, tot, nomi) => `Sulla mappa: ${T.conta(v)} su ${tot}, ${nomi}.`,
     tappa: 'Tappa', tappaVoce: (nome, titolo) => `${nome}: tappa del racconto «${titolo}»`,
     giorno: (n) => `Giorno ${n}`, vaiGiorno: 'Vai a questo giorno del racconto', vaiPunto: 'Vai a questo punto del racconto',
-    gruppo: (n) => `${n} luoghi vicini: aprilo per ingrandire`,
-    tappeDi: (luogo) => `Le tappe del viaggio: ${luogo}`
+    gruppo: (n) => `${n} luoghi vicini: aprilo per ingrandire`
   };
 
   /* Dimensione del testo scelta l'ultima volta (subito, per evitare salti) */
@@ -987,7 +983,7 @@
             stato.className = 'mappa-stato';
             zona.querySelector('.mappa-riquadro').appendChild(stato);
           }
-          stato.textContent = completa ? T.mappaErrore : T.mappaErroreHome;
+          stato.textContent = T.mappaErrore;
           stato.classList.add('errore');
           zona.querySelector('.mappa-barra').hidden = true;
         });
@@ -1088,10 +1084,13 @@
       });
     });
 
-    /* i luoghi vicini si raggruppano con un numero e si separano ingrandendo */
+    /* i luoghi vicini si raggruppano con un numero e si separano ingrandendo.
+       removeOutsideVisibleBounds: false → sul telefono i segnaposti fuori dal riquadro restano sulla mappa:
+       altrimenti, quando la scheda aperta fa spostare la mappa, il segnaposto spariva e la scheda si chiudeva */
     const gruppo = L.markerClusterGroup
       ? L.markerClusterGroup({
           maxClusterRadius: 48, showCoverageOnHover: false, spiderfyOnMaxZoom: true, animate: !fermo, iconCreateFunction: cerchio,
+          removeOutsideVisibleBounds: false,
           spiderLegPolylineOptions: { weight: 2, color: '#213b2c', opacity: 0.6 }
         })
       : L.layerGroup();
@@ -1210,32 +1209,6 @@
     filtra(false);
   }
 
-  /* ---------- pagina della mappa: tutti i luoghi in un elenco, divisi per sezione ----------
-     per chi usa un lettore di schermo e per chi preferisce non usare la mappa */
-  function avviaLuoghi() {
-    const zona = document.querySelector('[data-luoghi]');
-    if (!zona) return;
-    const ordinati = RACCONTI.slice().sort(dalPiuRecente);
-    const voce = (r) => {
-      const tappe = tappeDi(r);
-      return `<li>
-          <a class="link" href="${P}${esc(r.pagina)}">${esc(r.titolo)}</a>
-          <span class="luoghi-dove">${esc(r.luogo)} · ${esc(r.regione)} · ${esc(r.dataTesto)}</span>
-          ${tappe.length ? `<ul class="luoghi-tappe" aria-label="${esc(T.tappeDi(r.luogo))}">${tappe.map((t) => {
-            const n = numeroGiorno(t.giorno);
-            return `<li><a href="${indirizzoTappa(r, t)}">${esc(nomeTappa(r, t))}</a>${n ? ` <span class="luoghi-giorno">· ${T.giorno(n)}</span>` : ''}</li>`;
-          }).join('')}</ul>` : ''}
-        </li>`;
-    };
-    zona.innerHTML = `<div class="luoghi-griglia">${Object.keys(SEZIONI).map((k) => {
-      const qui = ordinati.filter((r) => sezioneDi(r) === k);
-      return `<section class="luoghi-sezione sez-${k}" aria-labelledby="luoghi-${k}">
-          <h3 id="luoghi-${k}"><span class="mappa-segno sez-${k}" aria-hidden="true"></span><a class="link" href="${P}${SEZIONI[k].pagina}">${esc(SEZIONI[k].nome)}</a></h3>
-          ${qui.length ? `<ul class="luoghi-lista">${qui.map(voce).join('')}</ul>` : `<p class="luoghi-vuoto">${T.prossimamente}</p>`}
-        </section>`;
-    }).join('')}</div>`;
-  }
-
   /* ---------- comparsa graduale durante lo scroll ---------- */
   function avviaRivela() {
     const voti = Array.from(document.querySelectorAll('.voto'));
@@ -1295,7 +1268,6 @@
     avviaFeedback();
     avviaContatti();
     avviaMappe();
-    avviaLuoghi();
     preparaImmagini(document);
     avviaRivela();
     avviaTornaSu();
