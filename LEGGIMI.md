@@ -321,21 +321,22 @@ Perché i messaggi arrivino anche nella casella di posta di Anna, l'indirizzo va
 
 ## Contatti e profili social
 
-Nel sito non compaiono né un indirizzo e-mail né profili social: chi vuole scrivere usa la sezione «Scrivimi».
+Nel sito non compare nessun indirizzo e-mail: chi vuole scrivere usa la sezione «Scrivimi».
 La voce **Contatti** del menu e il collegamento «Scrivimi» a fondo pagina portano lì da ogni pagina.
 
-Quando ci saranno dei profili social, basta aggiungerli in cima a `js/contenuti.js`, nella lista `social`
-(lì accanto c'è un esempio pronto da copiare):
+I profili social sono in cima a `js/contenuti.js`, nella lista `social`. Oggi c'è la pagina Facebook del blog:
 
 ```js
 social: [
-  { nome: "Instagram", url: "https://www.instagram.com/NOME-DEL-PROFILO" },
-  { nome: "Facebook",  url: "https://www.facebook.com/NOME-DELLA-PAGINA" }
+  { nome: "Facebook", url: "https://www.facebook.com/profile.php?id=61595596708879" }
 ]
 ```
 
-Compariranno da soli a fondo pagina, sotto «Scrivimi», in tutte le pagine. Con la lista vuota (`social: []`)
-sul sito non compare niente che riguardi i social.
+Compaiono da soli a fondo pagina, sotto «Scrivimi», in tutte le pagine italiane e inglesi, con la loro icona
+(Facebook e Instagram; per gli altri un mappamondo), e si aprono in una nuova scheda.
+Per aggiungere un profilo si copia la riga, si mette una virgola tra le due righe e si cambiano nome e indirizzo,
+per esempio `{ nome: "Instagram", url: "https://www.instagram.com/NOME-DEL-PROFILO" }`.
+Con la lista vuota (`social: []`) sul sito non compare niente che riguardi i social.
 
 ## Cambiare le foto della home
 

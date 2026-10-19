@@ -35,7 +35,7 @@
     dove: 'Where: ', quando: 'When: ', esperienza: 'Experience', esperienzaComplessiva: 'Overall experience',
     accessibilita: 'Accessibility', leggi: 'Read the story',
     footerFrase: 'Real trips, tried on my own wheels, to help wheelchair users set off without nasty surprises.',
-    mieiViaggi: 'My trips', sezioniBlog: 'Blog sections', comeLeggere: 'How to read the stories', contatti: 'Contact', scrivimi: 'Write to me',
+    mieiViaggi: 'My trips', nuovaScheda: ' (opens in a new tab)', sezioniBlog: 'Blog sections', comeLeggere: 'How to read the stories', contatti: 'Contact', scrivimi: 'Write to me',
     avviso: 'Services, access and parking conditions can change: always check the latest information for each place.',
     provati: 'Stories tested with a wheelchair and Triride.',
     prossimamente: 'Coming soon', togli: 'Clear filters',
@@ -100,7 +100,7 @@
     dove: 'Dove: ', quando: 'Quando: ', esperienza: 'Esperienza', esperienzaComplessiva: 'Esperienza complessiva',
     accessibilita: 'Accessibilità', leggi: 'Leggi il racconto',
     footerFrase: 'Viaggi veri, provati con le mie ruote, per aiutare chi viaggia in carrozzina a partire senza brutte sorprese.',
-    mieiViaggi: 'I miei viaggi', sezioniBlog: 'Sezioni del blog', comeLeggere: 'Come leggere i racconti', contatti: 'Contatti', scrivimi: 'Scrivimi',
+    mieiViaggi: 'I miei viaggi', nuovaScheda: ' (si apre in una nuova scheda)', sezioniBlog: 'Sezioni del blog', comeLeggere: 'Come leggere i racconti', contatti: 'Contatti', scrivimi: 'Scrivimi',
     avviso: 'Servizi, accessi e condizioni di sosta possono cambiare: controlla sempre le informazioni aggiornate dei luoghi.',
     provati: 'Racconti provati con carrozzina e Triride.',
     prossimamente: 'Prossimamente', togli: 'Togli i filtri',
@@ -283,7 +283,8 @@
       const social = (SITO.social || []).map((s) => {
         const nome = String(s.nome || '');
         const ic = { instagram: 'instagram', facebook: 'facebook' }[nome.toLowerCase()] || 'globo';
-        return `<li><a href="${esc(s.url)}" rel="me noopener">${icona(ic)}${esc(nome)}</a></li>`;
+        /* i profili social si aprono in una nuova scheda (chi usa un lettore di schermo lo sente annunciare) */
+        return `<li><a href="${esc(s.url)}" target="_blank" rel="me noopener">${icona(ic)}${esc(nome)}<span class="vh">${T.nuovaScheda}</span></a></li>`;
       }).join('');
       this.innerHTML = `<footer class="fondo">
         <div class="contenitore">

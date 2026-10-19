@@ -8,19 +8,21 @@
    L'indirizzo e-mail non compare nel sito: chi vuole scrivere usa la sezione
    «Scrivimi» della home, e i messaggi arrivano ad Anna tramite Netlify.
 
-   social → per ora è vuoto, quindi nel sito non compare niente sui social.
-   Quando ci sarà un profilo, scriverlo tra le parentesi quadre, uno per riga:
+   social → i profili social del blog, uno per riga. Per ora c'è la pagina Facebook.
+   Per aggiungerne un altro, copiare la riga e cambiare nome e indirizzo, per esempio:
 
-     social: [
-       { nome: "Instagram", url: "https://www.instagram.com/NOME-DEL-PROFILO" },
-       { nome: "Facebook",  url: "https://www.facebook.com/NOME-DELLA-PAGINA" }
-     ]
+       { nome: "Instagram", url: "https://www.instagram.com/NOME-DEL-PROFILO" }
 
-   I profili compaiono da soli in fondo a ogni pagina, sotto «Scrivimi».
+   (tra una riga e l'altra serve la virgola). Per toglierli tutti: social: []
+
+   I profili compaiono da soli in fondo a ogni pagina, sotto «Scrivimi», con la loro icona
+   (Facebook e Instagram; per gli altri un mappamondo) e si aprono in una nuova scheda.
    -------------------------------------------------------------------------- */
 window.SITO = {
   autrice: "Anna Bigazzi",
-  social: []
+  social: [
+    { nome: "Facebook", url: "https://www.facebook.com/profile.php?id=61595596708879" }
+  ]
 };
 
 /* 2. ELENCO DEI RACCONTI ----------------------------------------------------
