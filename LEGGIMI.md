@@ -17,6 +17,7 @@ Per vederlo basta un doppio clic su `index.html`. Per metterlo online si carica 
 | `moduli-netlify.html` | Pagina di servizio per Netlify: **non cancellarla** (vedi «I moduli del sito») |
 | `sitemap.xml`, `robots.txt` | L'elenco delle pagine per Google e le indicazioni per i motori di ricerca (vedi «Farsi trovare su Google») |
 | `_redirects`, `404.html` | Servono a Netlify: tengono nascosti online i file di lavoro e mostrano la pagina «non trovata». **Non cancellarli** (vedi «File che non devono vedersi online») |
+| `favicon.ico`, `favicon-48.png`, `favicon-96.png`, `favicon-192.png` | L'icona del sito (la ruota terracotta su fondo crema, uguale a `img/favicon.svg`) nei formati che leggono Google e i browser: compare nella scheda del browser e accanto al sito nei risultati di Google (vedi «Le icone del sito») |
 | `apple-touch-icon.png` | L'icona (la ruota del logo su fondo crema) che compare su iPhone e iPad quando si aggiunge il sito alla schermata Home |
 | `img/` | Le foto, una cartella per racconto; `img/home/` per le foto della home. In ogni cartella `anteprima.jpg` è la foto che compare quando si condivide il link |
 
@@ -246,9 +247,22 @@ sul sito (questo `LEGGIMI.md` e i due modelli dei racconti). Per non farli aprir
 Nessuno dei due va cancellato o rinominato. Dopo ogni pubblicazione si può controllare aprendo
 `https://inviaggiosullemieruote.com/LEGGIMI.md`: deve comparire la pagina «Pagina non trovata».
 
-**L'icona per iPhone.** `apple-touch-icon.png` (180×180 pixel, senza trasparenza) è collegata in cima a ogni pagina con
-`<link rel="apple-touch-icon" href="…">`, subito sotto la favicon e con lo stesso percorso (`../` nei racconti, `../../` nei racconti inglesi).
-Nei modelli la riga c'è già.
+**Le icone del sito.** In cima a ogni pagina ci sono cinque righe per l'icona, tutte con lo stesso disegno di `img/favicon.svg`:
+
+```html
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-96.png" type="image/png" sizes="96x96">
+<link rel="icon" href="favicon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+```
+
+Il percorso cambia con la cartella: niente davanti nelle pagine principali, `../` nei racconti e nelle pagine inglesi,
+`../../` nei racconti inglesi, `/` nella pagina `404.html`. Nei modelli le righe ci sono già.
+`favicon.ico` (con dentro 16, 32 e 48 pixel) e i PNG servono a Google, che non legge bene l'SVG: senza, nei risultati
+mostrava un mappamondo grigio. `apple-touch-icon.png` (180×180 pixel, senza trasparenza) è l'icona per iPhone e iPad.
+Se un giorno si cambia il disegno, vanno rifatti tutti questi file dal nuovo `img/favicon.svg`.
+Google aggiorna l'icona nei risultati da solo, ma può metterci qualche giorno o settimana.
 
 ## I moduli del sito: «Mi è stato utile», riscontri e «Scrivimi» (Netlify Forms)
 
