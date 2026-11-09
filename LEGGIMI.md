@@ -74,6 +74,10 @@ con «Ti è stato utile questo racconto?» e «Lascia un riscontro» si creano d
 - **I cuori** sono solo per l'esperienza complessiva: uno per racconto, in fondo alla scheda e sulla scheda in home.
 
 La colonna della tabella si chiama «Voto» (in inglese «Rating») proprio perché contiene sia stelle sia posate.
+
+**Il promemoria dei bagni** (`<ul class="promemoria">`) ha tre tipi di riga: normale (verde, bagno accessibile),
+`class="no"` (rosso, bagno non adattato) e `class="non-verificato"` (grigio) per un bagno segnalato ma non utilizzato
+né verificato, come quello del parcheggio a Perugia.
 Il disegno dell'icona del cibo sta in `css/stile.css`, nella riga che comincia con `--i-cibo`: per cambiarlo si sostituisce quella riga.
 
 ### Dare del tu
@@ -93,6 +97,8 @@ I racconti si scrivono al passato («siamo arrivati», «abbiamo scelto»); rest
 - **Non ricomprimere le foto già pubblicate:** comprimere una seconda volta una foto già compressa la peggiora e fa risparmiare poco.
   Le foto del sito sono quelle originali dei racconti e vanno lasciate così.
 - `width` e `height` sono le misure della foto in pixel: servono a non far «saltare» la pagina mentre si carica.
+- Nelle gallerie le foto vengono ritagliate tutte alla stessa forma. Per dipinti o oggetti con scritte, che non vanno tagliati,
+  si usa `<div class="galleria intera">`: le foto restano intere (esempio: i dipinti in `racconti/perugia-sulle-mie-ruote.html`).
 - `alt` descrive la foto a chi non la vede: una frase semplice, senza «foto di».
 - La foto di copertina della scheda (`copertina:` in `js/contenuti.js`) va bene larga circa 900 pixel.
 - Tutte le foto, tranne la prima in alto, hanno `loading="lazy"`: così da telefono si scaricano solo quando servono.

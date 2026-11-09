@@ -59,6 +59,22 @@ window.SITO = {
    -------------------------------------------------------------------------- */
 window.RACCONTI = [
   {
+    id: "perugia",
+    pagina: "racconti/perugia-sulle-mie-ruote.html",
+    titolo: "Perugia sulle mie ruote",
+    sommario: "Una giornata tra cioccolato, storia, arte e cucina umbra.",
+    sezione: "gite",
+    luogo: "Perugia",
+    regione: "Umbria",
+    data: "2026-11-07",
+    dataTesto: "Sabato 7 novembre 2026",
+    copertina: "img/perugia/piazza-iv-novembre-card.webp",
+    copertinaAlt: "Anna con il suo Triride in Piazza IV Novembre, con il Palazzo dei Priori sullo sfondo.",
+    cuori: 5,
+    tag: ["bagno", "parcheggio", "accompagnatore", "pendenza"],
+    coordinate: [43.1121, 12.3888]
+  },
+  {
     id: "ferrara",
     pagina: "racconti/ferrara-sulle-mie-ruote.html",
     titolo: "Ferrara sulle mie ruote",

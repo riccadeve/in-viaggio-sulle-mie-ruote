@@ -15,6 +15,16 @@
    -------------------------------------------------------------------------- */
 window.RACCONTI_EN = {
 
+  perugia: {
+    pagina: "stories/perugia-on-my-wheels.html",
+    titolo: "Perugia on my wheels",
+    sommario: "A day of chocolate, history, art and Umbrian cooking.",
+    luogo: "Perugia",
+    regione: "Umbria",
+    dataTesto: "Saturday 7 November 2026",
+    copertinaAlt: "Anna with her Triride in Piazza IV Novembre, with Palazzo dei Priori in the background."
+  },
+
   ferrara: {
     pagina: "stories/ferrara-on-my-wheels.html",
     titolo: "Ferrara on my wheels",

@@ -879,6 +879,8 @@ testata-sito { display: block; position: sticky; top: 0; z-index: 50; }
 .galleria .foto img { aspect-ratio: 4 / 5; object-fit: cover; }
 .galleria.quadrata .foto img { aspect-ratio: 1; }
 .galleria.orizzontale .foto img { aspect-ratio: 4 / 3; }
+/* class="galleria intera": foto intere, senza ritaglio (dipinti, oggetti con scritte) */
+.galleria.intera .foto img, .galleria.intera .foto:last-child:nth-child(odd) img { aspect-ratio: auto; object-fit: contain; }
 
 /* scheda «Il mio senza sorprese» */
 .senza-sorprese {
@@ -931,6 +933,10 @@ testata-sito { display: block; position: sticky; top: 0; z-index: 50; }
 .promemoria li.no strong { color: #4a1f0f; }
 .promemoria li.no::before { background: var(--terracotta); }
 .promemoria li.no::after { -webkit-mask-image: var(--i-chiudi); mask-image: var(--i-chiudi); }
+/* class="non-verificato": un bagno segnalato ma non utilizzato né verificato (grigio: né sì né no) */
+.promemoria li.non-verificato { background: var(--sabbia); color: var(--testo); }
+.promemoria li.non-verificato strong { color: var(--bosco); }
+.promemoria li.non-verificato::before { background: var(--testo-tenue); }
 
 .nota { margin: 1.5rem 0; padding: 1rem 1.2rem; border-left: .3rem solid var(--salvia-scura); border-radius: 0 1rem 1rem 0; background: var(--salvia); color: var(--bosco-scuro); font-size: .95rem; line-height: 1.55; }
 .nota strong { display: block; margin-bottom: .2rem; color: var(--bosco); }
