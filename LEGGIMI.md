@@ -74,6 +74,8 @@ con «Ti è stato utile questo racconto?» e «Lascia un riscontro» si creano d
 - **I cuori** sono solo per l'esperienza complessiva: uno per racconto, in fondo alla scheda e sulla scheda in home.
 
 La colonna della tabella si chiama «Voto» (in inglese «Rating») proprio perché contiene sia stelle sia posate.
+Se Anna non scrive le note «Da sapere prima», la tabella può avere solo le colonne «Voce» e «Voto»: basta togliere
+la terza colonna, e da computer la voce prende da sola più spazio (esempio: `racconti/monte-san-savino-sulle-mie-ruote.html`).
 
 **Il promemoria dei bagni** (`<ul class="promemoria">`) ha tre tipi di riga: normale (verde, bagno accessibile),
 `class="no"` (rosso, bagno non adattato) e `class="non-verificato"` (grigio) per un bagno segnalato ma non utilizzato

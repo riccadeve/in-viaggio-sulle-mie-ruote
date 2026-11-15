@@ -15,6 +15,16 @@
    -------------------------------------------------------------------------- */
 window.RACCONTI_EN = {
 
+  "monte-san-savino": {
+    pagina: "stories/monte-san-savino-on-my-wheels.html",
+    titolo: "Monte San Savino on my wheels",
+    sommario: "A day among the streets of the old town, Aldo’s ciccia and porchetta, and the aromas of extra virgin olive oil.",
+    luogo: "Monte San Savino",
+    regione: "Tuscany",
+    dataTesto: "Saturday 14 November 2026",
+    copertinaAlt: "Anna with her Triride in front of the columns of the Logge dei Mercanti."
+  },
+
   perugia: {
     pagina: "stories/perugia-on-my-wheels.html",
     titolo: "Perugia on my wheels",

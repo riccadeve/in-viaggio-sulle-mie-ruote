@@ -59,6 +59,23 @@ window.SITO = {
    -------------------------------------------------------------------------- */
 window.RACCONTI = [
   {
+    id: "monte-san-savino",
+    pagina: "racconti/monte-san-savino-sulle-mie-ruote.html",
+    titolo: "Monte San Savino sulle mie ruote",
+    sommario: "Una giornata tra le vie del centro storico, la ciccia e la porchetta di Aldo e i profumi dell’extravergine.",
+    sezione: "gite",
+    luogo: "Monte San Savino",
+    regione: "Toscana",
+    data: "2026-11-14",
+    dataTesto: "Sabato 14 novembre 2026",
+    copertina: "img/monte-san-savino/logge-dei-mercanti-card.webp",
+    copertinaAlt: "Anna con il suo Triride davanti alle colonne delle Logge dei Mercanti.",
+    copertinaFuoco: "center bottom",
+    cuori: 5,
+    tag: ["bagno", "parcheggio", "accompagnatore", "pendenza"],
+    coordinate: [43.3315, 11.7252]
+  },
+  {
     id: "perugia",
     pagina: "racconti/perugia-sulle-mie-ruote.html",
     titolo: "Perugia sulle mie ruote",

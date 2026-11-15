@@ -906,6 +906,10 @@ testata-sito { display: block; position: sticky; top: 0; z-index: 50; }
 .tabella-voti tbody th { width: 30%; font-weight: 700; color: var(--bosco); }
 .tabella-voti .quando { display: block; margin-top: .2rem; font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--terracotta-testo); }
 .tabella-voti .voto { font-size: 1rem; }
+/* tabella con due sole colonne (Voce e Voto, senza la colonna «Da sapere prima»): la voce prende più spazio */
+@media (min-width: 44.01em) {
+  .tabella-voti:not(:has(thead th:nth-child(3))) tbody th { width: 62%; }
+}
 @media (max-width: 44em) {
   .tabella-voti thead { display: block; position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .tabella-voti, .tabella-voti tbody, .tabella-voti tr, .tabella-voti tbody th, .tabella-voti td { display: block; width: auto; }
