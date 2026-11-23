@@ -11,9 +11,27 @@
    una tappa in inglese è diverso, si aggiunge al blocco del racconto, per esempio:
      nomiTappe: { "Alpe di Siusi / Compaccio": "Alpe di Siusi / Compatsch" }
    (a sinistra il nome italiano, uguale a quello di contenuti.js; a destra quello inglese).
-   Per ora non serve: i nomi delle tappe sono uguali nelle due lingue.
+   Lo usa Grecia e Turchia (per esempio "Atene" diventa "Athens"); negli altri racconti
+   i nomi delle tappe sono uguali nelle due lingue.
    -------------------------------------------------------------------------- */
 window.RACCONTI_EN = {
+
+  "grecia-turchia": {
+    pagina: "stories/greece-and-turkey-on-my-wheels.html",
+    titolo: "Greece and Turkey on my wheels",
+    sommario: "Ten days cruising from Trieste to Istanbul, my first summer in a wheelchair, before the Triride.",
+    luogo: "Greece and Turkey",
+    regione: "Greece · Turkey · Apulia",
+    dataTesto: "18–27 August 2025 · 10 days",
+    copertinaAlt: "Anna and Gabriele at the foot of the columns of the Parthenon, in Athens.",
+    nomiTappe: {
+      "Katakolon e Olympia": "Katakolon and Olympia",
+      "Atene": "Athens",
+      "Kuşadası ed Efeso": "Kuşadası and Ephesus",
+      "Stretto dei Dardanelli": "Dardanelles Strait",
+      "Corfù (Paleokastritsa)": "Corfu (Paleokastritsa)"
+    }
+  },
 
   "monte-san-savino": {
     pagina: "stories/monte-san-savino-on-my-wheels.html",

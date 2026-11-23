@@ -569,6 +569,9 @@ testata-sito { display: block; position: sticky; top: 0; z-index: 50; }
   color: var(--bosco);
 }
 .citazione p { margin: 0; }
+/* citazione di più paragrafi (la chiusura di un racconto): carattere un po' più piccolo e spazio tra i paragrafi */
+.citazione-lunga { margin: 3rem 0 0; font-size: clamp(1.15rem, 1.05rem + .45vw, 1.35rem); line-height: 1.45; }
+.citazione-lunga p + p { margin-top: .9em; }
 
 .ritorno { margin-top: 2rem; padding: 1.4rem 1.6rem 1.5rem; border-radius: var(--raggio); background: var(--salvia); color: var(--bosco-scuro); }
 .ritorno h3 { display: flex; align-items: center; gap: .6rem; margin-bottom: .5rem; font-size: 1.3rem; }
@@ -869,6 +872,8 @@ testata-sito { display: block; position: sticky; top: 0; z-index: 50; }
 
 .galleria { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-items: start; margin: 2rem 0; }
 .galleria:has(> .foto:nth-child(3)) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+/* quattro foto: due righe da due anche su computer */
+.galleria:has(> .foto:nth-child(4):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 40em) {
   /* su telefono sempre due colonne; se le foto sono dispari, l'ultima prende tutta la riga */
   .galleria:has(> .foto:nth-child(3)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }

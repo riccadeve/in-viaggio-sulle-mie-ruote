@@ -39,7 +39,8 @@ Menu in alto e fondo pagina sono scritti una volta sola (in `js/sito.js`) e comp
    così il racconto compare da solo sulla mappa. Come si fa è spiegato in «La mappa dei miei viaggi».
 5. **Controllo.** Aprire `index.html`: il racconto compare da solo nella sua sezione, nei filtri, sulla mappa e nei
    collegamenti «precedente / successivo» degli altri racconti. In home, «Gli ultimi racconti» mostra
-   i tre viaggi più recenti per data del viaggio: un viaggio più vecchio (come Miami) lì non compare.
+   i tre racconti usciti per ultimi: di solito vale la data del viaggio, ma per un viaggio vecchio raccontato
+   adesso si aggiunge al blocco la data di uscita, `pubblicato: "anno-mese-giorno"` (vedi «Da sapere»).
 6. **Google e anteprima dei link.** In cima alla pagina riempire titolo, descrizione, indirizzi completi e dati
    strutturati, preparare `anteprima.jpg` e aggiungere la pagina a `sitemap.xml`: i passi sono in «Farsi trovare su Google».
 
@@ -51,6 +52,9 @@ con «Ti è stato utile questo racconto?» e «Lascia un riscontro» si creano d
 - Stelle: `<span class="stelle" data-voto="4">4 su 5</span>` (da 1 a 5).
 - Voto al cibo (icona delle posate): `<span class="piatti" data-voto="4">4 su 5</span>` (da 1 a 5; in inglese `4 out of 5`).
 - Cuori: `<span class="cuori" data-voto="5">5 cuori su 5</span>`; il voto complessivo va scritto uguale in `cuori:` dentro `js/contenuti.js`.
+  I cuori sono facoltativi: un racconto senza voto complessivo (come `racconti/grecia-e-turchia-sulle-mie-ruote.html`,
+  scritto a posteriori) non ha la riga `cuori:` nel suo blocco, e la sua scheda in home, nelle sezioni e sulla mappa
+  non mostra la riga «Esperienza». Nella pagina basta non mettere il riquadro `voto-finale`.
 - Etichette per i filtri, in `tag:` dentro `js/contenuti.js`:
   `"bagno"`, `"parcheggio"`, `"accompagnatore"`, `"pendenza"`, `"impianti"`.
 
@@ -101,6 +105,10 @@ I racconti si scrivono al passato («siamo arrivati», «abbiamo scelto»); rest
 - `width` e `height` sono le misure della foto in pixel: servono a non far «saltare» la pagina mentre si carica.
 - Nelle gallerie le foto vengono ritagliate tutte alla stessa forma. Per dipinti o oggetti con scritte, che non vanno tagliati,
   si usa `<div class="galleria intera">`: le foto restano intere (esempio: i dipinti in `racconti/perugia-sulle-mie-ruote.html`).
+  Con `galleria quadrata` le foto diventano quadrate: va bene quando nella stessa galleria ci sono foto orizzontali e verticali.
+  Una galleria da 4 foto va su due righe da due, sia da computer sia da telefono.
+- Per dare risalto alla chiusura di un racconto c'è lo stile della citazione: `<div class="citazione citazione-lunga">`
+  con dentro i paragrafi (esempio: il finale di `racconti/grecia-e-turchia-sulle-mie-ruote.html`).
 - `alt` descrive la foto a chi non la vede: una frase semplice, senza «foto di».
 - La foto di copertina della scheda (`copertina:` in `js/contenuti.js`) va bene larga circa 900 pixel.
 - Tutte le foto, tranne la prima in alto, hanno `loading="lazy"`: così da telefono si scaricano solo quando servono.
@@ -380,8 +388,10 @@ Se si cambia `hero.jpg` (la copertina), va rifatta anche `anteprima.jpg`, la fot
 - Su telefono il nome del sito in alto va su due righe («In viaggio» / «sulle mie ruote»); sugli schermi più stretti di 360 pixel
   resta solo la ruota del logo, per lasciare posto ai pulsanti EN, A+ e Menu.
 - Una sezione mostra «Prossimamente» finché in `js/contenuti.js` non c'è almeno un racconto con quella `sezione`.
-- In home «Gli ultimi racconti» e, in fondo ai racconti, «precedente / successivo» seguono la data del viaggio.
-  Solo se si vuole mettere in evidenza in home un viaggio più vecchio, in `js/contenuti.js` si può aggiungere
-  al suo blocco `pubblicato: "anno-mese-giorno"` con la data di messa online.
+- In home «Gli ultimi racconti» mostra i tre racconti usciti per ultimi. Per ordinarli il sito usa il campo facoltativo
+  `pubblicato: "anno-mese-giorno"` (la data in cui il racconto è stato messo online) e, se manca, la data del viaggio (`data`).
+  Di norma non serve; si aggiunge quando si racconta adesso un viaggio vecchio, che altrimenti finirebbe in fondo:
+  per esempio Grecia e Turchia, crociera dell'agosto 2025 pubblicata il 23 novembre 2026, ha `pubblicato: "2026-11-23"`.
+  Le sezioni, la mappa e, in fondo ai racconti, «precedente / successivo» restano ordinati per data del viaggio.
 - Per un racconto di più giorni con molte foto (come `racconti/miami-sulle-mie-ruote.html`, 12 giorni e 106 foto) conviene copiare da lì:
   titoli dei giorni, gallerie da 2 o 3 foto e, nella scheda finale, i riquadri `nota` con un elenco di informazioni da ricordare.

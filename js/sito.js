@@ -214,6 +214,13 @@
     return `<span class="voto ${cuori ? 'cuori' : 'stelle'}" role="img" aria-label="${esc(voce)}"><span class="voto-icone">${icone}</span><span class="voto-num">${n}/5</span></span>`;
   }
 
+  /* cuori dell'esperienza complessiva nelle schede: «cuori» è facoltativo; se manca la riga non compare */
+  function esperienzaHTML(r) {
+    return Number(r.cuori) > 0
+      ? `<p class="scheda-voto"><span aria-hidden="true">${T.esperienza}</span> ${votoHTML(r.cuori, 'cuori', T.esperienzaComplessiva)}</p>`
+      : '';
+  }
+
   function tagHTML(elenco) {
     return (elenco || []).filter((t) => TAG[t]).map((t) => `<li><span class="tag">${icona(TAG[t].icona)}${esc(TAG[t].nome)}</span></li>`).join('');
   }
@@ -233,7 +240,7 @@
           <li>${icona('calendario')}<span><span class="vh">${T.quando}</span>${esc(r.dataTesto)}</span></li>
         </ul>
         <p class="scheda-testo">${esc(r.sommario)}</p>
-        <p class="scheda-voto"><span aria-hidden="true">${T.esperienza}</span> ${votoHTML(r.cuori, 'cuori', T.esperienzaComplessiva)}</p>
+        ${esperienzaHTML(r)}
         <ul class="tag-lista" aria-label="${T.accessibilita}">${tagHTML(r.tag)}</ul>
         <span class="scheda-leggi" aria-hidden="true">${T.leggi} ${icona('freccia')}</span>
       </div>
@@ -809,8 +816,11 @@
         </form>
         <p class="modulo-grazie" tabindex="-1" hidden></p>
       </div>`;
+    /* il riquadro va dopo la scheda finale; se il racconto si chiude con una citazione subito dopo la scheda
+       (come Grecia e Turchia), va dopo la citazione, così la chiusura resta l'ultima parte del racconto */
     const scheda = articolo.querySelector('.senza-sorprese');
-    if (scheda) scheda.insertAdjacentElement('afterend', sez); else articolo.appendChild(sez);
+    const dopo = scheda && scheda.nextElementSibling && scheda.nextElementSibling.matches('.citazione-lunga') ? scheda.nextElementSibling : scheda;
+    if (dopo) dopo.insertAdjacentElement('afterend', sez); else articolo.appendChild(sez);
 
     /* 1. «Sì, mi è stato utile» */
     const btnUtile = sez.querySelector('.btn-utile');
@@ -913,7 +923,7 @@
             <li>${icona('luogo')}<span><span class="vh">${T.dove}</span>${esc(r.luogo)} · ${esc(r.regione)}</span></li>
             <li>${icona('calendario')}<span><span class="vh">${T.quando}</span>${esc(r.dataTesto)}</span></li>
           </ul>
-          <p class="scheda-voto"><span aria-hidden="true">${T.esperienza}</span> ${votoHTML(r.cuori, 'cuori', T.esperienzaComplessiva)}</p>
+          ${esperienzaHTML(r)}
           <a class="btn btn-primario" href="${P}${esc(r.pagina)}">${T.leggi} ${icona('freccia')}</a>
         </div>
       </div>`;

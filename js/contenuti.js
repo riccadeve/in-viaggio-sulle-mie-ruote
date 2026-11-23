@@ -31,11 +31,17 @@ window.SITO = {
 
    sezione → "gite" (Gite fuori porta) · "weekend" (Weekend e soggiorni) · "grandi" (Grandi viaggi)
    data    → il giorno della visita (o il primo giorno), scritto anno-mese-giorno
-   pubblicato → facoltativo, di norma NON serve: in home «Gli ultimi racconti»
-             mostra i tre viaggi più recenti per data del viaggio.
-             Solo se si vuole mettere in evidenza in home un viaggio più vecchio,
-             aggiungere pubblicato: "anno-mese-giorno" con la data di messa online.
-   cuori   → voto complessivo da 1 a 5
+   pubblicato → facoltativo: la data in cui il racconto è stato messo sul sito, anno-mese-giorno.
+             Serve solo a ordinare «Gli ultimi racconti» in home, che mostra i tre racconti
+             usciti per ultimi: se un racconto non ha «pubblicato», per lui vale «data».
+             Di norma NON serve; si aggiunge quando si racconta un viaggio vecchio che deve
+             comparire tra gli ultimi (esempio: Grecia e Turchia, viaggio del 2025 pubblicato
+             il 23 novembre 2026, ha pubblicato: "2026-11-23").
+             Le sezioni, la mappa e i collegamenti «precedente / successivo» restano
+             ordinati per data del viaggio.
+   cuori   → voto complessivo da 1 a 5. Facoltativo: se un racconto non ha un voto
+             complessivo (come Grecia e Turchia), si toglie la riga e la scheda
+             non mostra i cuori.
    tag     → quelli che servono fra:
              "bagno"           Bagno accessibile
              "parcheggio"      Parcheggio disabili
@@ -58,6 +64,33 @@ window.SITO = {
                ]
    -------------------------------------------------------------------------- */
 window.RACCONTI = [
+  {
+    id: "grecia-turchia",
+    pagina: "racconti/grecia-e-turchia-sulle-mie-ruote.html",
+    titolo: "Grecia e Turchia sulle mie ruote",
+    sommario: "Dieci giorni di crociera da Trieste a Istanbul, la mia prima estate in carrozzina, prima del Triride.",
+    sezione: "grandi",
+    luogo: "Grecia e Turchia",
+    regione: "Grecia · Turchia · Puglia",
+    data: "2025-08-18",
+    pubblicato: "2026-11-23",
+    dataTesto: "18–27 agosto 2025 · 10 giorni",
+    copertina: "img/grecia-turchia/partenone-card.webp",
+    copertinaAlt: "Anna e Gabriele ai piedi delle colonne del Partenone, ad Atene.",
+    copertinaFuoco: "center bottom",
+    tag: ["bagno", "accompagnatore"],
+    coordinate: [37.9755, 23.7350],
+    tappe: [
+      { nome: "Trieste",                coordinate: [45.6500, 13.7637], giorno: "trieste" },
+      { nome: "Katakolon e Olympia",    coordinate: [37.6410, 21.6349], giorno: "olympia" },
+      { nome: "Atene",                  coordinate: [37.9717, 23.7263], giorno: "atene" },
+      { nome: "Kuşadası ed Efeso",      coordinate: [37.9392, 27.3408], giorno: "efeso" },
+      { nome: "Stretto dei Dardanelli", coordinate: [40.3400, 26.6361], giorno: "dardanelli" },
+      { nome: "Istanbul",               coordinate: [41.0085, 28.9800], giorno: "istanbul" },
+      { nome: "Corfù (Paleokastritsa)", coordinate: [39.6733, 19.7153], giorno: "corfu" },
+      { nome: "Bari",                   coordinate: [41.1303, 16.8702], giorno: "bari" }
+    ]
+  },
   {
     id: "monte-san-savino",
     pagina: "racconti/monte-san-savino-sulle-mie-ruote.html",
